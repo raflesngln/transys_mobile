@@ -1,4 +1,4 @@
-import { View, HStack, Box, Heading, Text, Avatar, Center, Button, VStack, ScrollView,Stack, AspectRatio, Image, Spacer } from 'native-base';
+import { View, HStack, Box, Heading, Text, Avatar, Center, Button, VStack, ScrollView,Stack, AspectRatio, Image, Spacer, Badge } from 'native-base';
 import React, { useEffect, useState } from "react";
 import { Dimensions, ImageBackground, Pressable, StyleSheet ,TouchableOpacity} from "react-native";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -63,13 +63,31 @@ function HomePage (){
         <ScrollView showsVerticalScrollIndicator={false} >
         <HStack justifyContent="space-between" bg="#9cf4ff36" h="130" p={2} borderBottomLeftRadius={2} borderBottomRightRadius={70} zIndex={1}>
           <Box>
-           <HStack space={3} mb={3}>
-                <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
-                  <MaterialIcons name="build" color='#ffff' size={20} />
-                </Text>
-                <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
-                  <MaterialIcons name="comment" color='#ffff' size={20} />
-                </Text>
+           <HStack space={3} mb={2}>
+                <Stack>
+                    <Badge // bg="red.400"
+                        colorScheme="danger" rounded="full" mb={-3} mr={-2} zIndex={1} variant="solid" alignSelf="flex-end" _text={{
+                            fontSize: 10
+                        }}>
+                        99+
+                    </Badge>
+                    <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
+                    <MaterialIcons name="notifications" color='#ffff' size={20} />
+                    </Text>
+                </Stack>
+
+                <Stack>
+                    <Badge // bg="red.400"
+                        colorScheme="danger" rounded="full" mb={-3} mr={-2} zIndex={1} variant="solid" alignSelf="flex-end" _text={{
+                            fontSize: 10
+                        }}>
+                        2
+                    </Badge>
+                    <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
+                    <MaterialIcons name="email" color='#ffff' size={20} />
+                    </Text>
+                </Stack>
+
            </HStack>
 
             <Text color="gray.200" mt={2} mb={2}>Welcome,</Text>
@@ -77,8 +95,8 @@ function HomePage (){
           </Box>
           <Box>
             <Avatar bg="green.500" source={{
-                uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              }}> AJ
+                uri: "https://hris.att-group.co.id/assets/images/karyawan/F01A-150885933/tmp/F01A-150885933-26102021134633.jpeg"
+              }}> RN
               </Avatar>
           </Box>
         </HStack>
