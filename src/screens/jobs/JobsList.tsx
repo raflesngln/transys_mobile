@@ -137,7 +137,7 @@ const JoblistScreen = (props:any) => {
               </Box>
               </VStack>
             </Flex>
-            <VStack p="2" mt="-15%" bg="gray.200" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
+            <VStack p="2" mt="-15%" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
               <Box h="70%" w="100%" mb="50">
                 <ShipmentList refresh={()=>refrehData()}/>
               </Box>

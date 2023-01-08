@@ -15,6 +15,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useNavigation, useRoute } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import COLORS from '@config/colors';
+import LayoutBackground from '@components/LayoutBackground';
 
 var deviceHeight:any = Dimensions.get('window').height.toFixed();
 var deviceWidth:any = Dimensions.get('window').width;
@@ -54,7 +55,7 @@ const AnimatedTopHeaderHeight=AnimateHeaderValue.interpolate({
 })
 const AnimatedTopHeaderBg=AnimateHeaderValue.interpolate({
   inputRange:[0,60],
-  outputRange:['#d5d5d559','#ffff'],
+  outputRange:['#00bcd46e','#ffff'],
   extrapolate:'clamp'
 })
 const AnimatedTopHeaderColors=AnimateHeaderValue.interpolate({
@@ -78,7 +79,7 @@ const MessageDetail = () => {
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <LayoutBackground>
       {/* {
         loading && <LoadingProgress/>
       } */}
@@ -122,7 +123,7 @@ const MessageDetail = () => {
                     width:'100%',
                     // height:300,
                     // backgroundColor:AnimatedHeaderBg,
-                    backgroundColor:'#25294a',
+                    backgroundColor:'#26abbd8f',
                     height:AnimatedHeaderHeight,
                     borderBottomLeftRadius:AnimateHeaderRadius,
                     borderBottomRightRadius:AnimateHeaderRadius,
@@ -164,7 +165,7 @@ const MessageDetail = () => {
             <DummyText pid={id} />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </LayoutBackground>
   );
 };
 
@@ -227,7 +228,7 @@ const MessageDetail = () => {
 
   
   return (
-      <VStack h="100%" mt="-8%" >
+      <VStack h="125%" mt="-8%" >
         <Flex zIndex={1}  p={2}  mb={8}   borderTopRadius={20}  w="100%" h="78%">
           <ScrollView
               showsVerticalScrollIndicator={false}
@@ -243,7 +244,7 @@ const MessageDetail = () => {
               {/* <Text>..</Text> */}
             </Box>
 
-            <Box bg="#ffff" p={2} pl="4" borderRadius="6" mb={2} >
+            <Box bg="#c6eefbde" p={2} pl="4" borderRadius="6" mb={2} >
               <VStack>
                 <HStack mb={5} space={4}>
                   <Box w="85%">
@@ -298,7 +299,7 @@ const MessageDetail = () => {
               </VStack>
             </Box>
 
-            <Box bg="#ffff" p={2} pl="4" borderRadius="6" mb={2} >
+            <Box bg="#c6eefbde" p={2} pl="4" borderRadius="6" mb={2} >
               <VStack>
                 <HStack justifyContent="space-between">
                   <Heading>
@@ -334,7 +335,7 @@ const MessageDetail = () => {
                 </Center>
               </VStack>
             </Box>
-            <Box bg="#fff" p={2} pl="4" borderRadius="6" mb={2} >
+            <Box bg="#c6eefbde" p={2} pl="4" borderRadius="6" mb={2} >
               <VStack>
               <HStack justifyContent="space-between">
                   <Heading>

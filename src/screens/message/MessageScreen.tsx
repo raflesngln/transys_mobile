@@ -32,6 +32,7 @@ import {fetchDogs, fetchPokemon,fetchDogsInfinity} from '@services/sample_api/fe
 import { fetchDogsKEY,fetchPokemonKEY } from '@services/variableKEY';
 import DogCard from '@components/DogCard';
 import CardSkeleton from '@components/CardSkeleton';
+import LayoutBackground from '@components/LayoutBackground';
 
 
 const DetailScreen = (props:any) => {
@@ -39,9 +40,9 @@ const DetailScreen = (props:any) => {
   // const { title } = route.params;
 
   return (
-    <View style={{ flex: 1 }}>
+    <LayoutBackground>
       <Content/>
-    </View>
+    </LayoutBackground>
   );
 };
 
@@ -65,14 +66,7 @@ const wait = (t:any, v:any) => {
           <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
             <VStack space={2}  w='100%'>
-                <LinearGradient
-                  colors={[COLORS.gradient1,COLORS.gradient2,COLORS.gradient3]}
-                  style={styles.headerBox}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                >
-
-                    <HStack p="2" pt="3" display="flex" flexDirection="row" justifyContent="space-between">
+                    <HStack  style={styles.headerBox} bg="#00bcd44a" p="2" pt="3" display="flex" flexDirection="row" justifyContent="space-between">
                         <Box mt="2">
                         <Text style={{color:'#ffff',fontWeight:'600',fontSize:22}}><MaterialCommunityIcons name="chat-processing-outline" color='#bfe0ce' size={20} /> Message's</Text>
                       </Box>
@@ -88,7 +82,6 @@ const wait = (t:any, v:any) => {
                         </Box>
                       </HStack>
                     </HStack>
-              </LinearGradient>
               <Box mt="-10%">
                 <TabMenu/>
               </Box>
@@ -99,7 +92,7 @@ const wait = (t:any, v:any) => {
     };
 
 const FirstRoute = () => (
-    <VStack style={{flex:1}} mt={5} p="2"  bg="coolGray.200" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
+    <VStack style={{flex:1}} mt={5} p="2" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" >
       <Box h="80%" w="100%" mb="50">
         <DogListsItems />
       </Box>
@@ -155,7 +148,7 @@ function TabMenu() {
       initialLayout={{ width: layout.width }}
       renderTabBar={props => <TabBar {...props} 
                     indicatorStyle={{ backgroundColor: '#00fff5',height:3,bottom:1,width:'25%',marginLeft:'2%' }}
-                    style={{backgroundColor:'#3e8eab',borderRadius:10,borderColor:'#3e8eab',borderWidth:1}}
+                    style={{backgroundColor:'#0b5c8b',borderRadius:10,borderColor:'#3e8eab',borderWidth:1}}
                     renderLabel={({ route, focused, colora }:any) => (
                           <Text style={{color:colora,margin: 5}}>
                               {route.title}
@@ -200,6 +193,8 @@ function DogListsItems(props:any): JSX.Element {
     return (
       <SafeAreaView style={{ flex: 1 }}>
           <FlashList
+            nestedScrollEnabled
+            showsVerticalScrollIndicator={false}
             keyExtractor={(item:any) => item.id}
             data={data}
             renderItem={({ item }) => <DogCard ListItems={item} />}
@@ -263,7 +258,7 @@ function PokemonData(props:any): JSX.Element {
 
     return (
       <SafeAreaView style={{ flex: 1,marginBottom:10 }}>
-        <ScrollView h="98%" w="100%" style={{flex:1}}>
+        <ScrollView h="98%" w="100%" style={{flex:1}} showsVerticalScrollIndicator={false}>
             {isLoading ? (
               <Box><Text>loading...</Text></Box>
             ) : (
@@ -271,7 +266,7 @@ function PokemonData(props:any): JSX.Element {
                 <Stack space={2} borderRadius={6}>
                   {data.pages.map((group:any, i:number) =>
                     group.response.map((pokemon:any) =>{
-                      return <Box bg="#ffff" p={2} borderRadius={6}>
+                      return <Box bg="#c6eefbde" p={2} borderRadius={6}>
                         <VStack>
                           <Text>{pokemon.name}</Text>
                           <Text>{pokemon.url}</Text>
@@ -354,11 +349,12 @@ function GetDogsInfinity(props:any): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView style={{ flex: 1,  }}>
       <FlashList
+        showsVerticalScrollIndicator={false}
         keyExtractor={(item:any) => item.id}
         data={flattenData}
-        renderItem={({ item }) => <DogsCard dog={item} />}
+        renderItem={({ item }) => <DogsCardInfinity dog={item} />}
         onEndReached={loadNext}
         estimatedItemSize={100}
         onEndReachedThreshold={0.3}
@@ -378,14 +374,13 @@ function GetDogsInfinity(props:any): JSX.Element {
 
 }
 
-const DogsCard = ({ dog }) => {
+const DogsCardInfinity = ({ dog }) => {
   const navigation = useNavigation<any>();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'DetailMessage', params: {title:dog.id } })}>
-
+    <TouchableOpacity onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'DetailMessage', params: {title:dog.id } })} >
     <Box>
-      <VStack borderColor="#DCDCDC" bg="#ffff" borderBottomWidth={1} p={1} pl={2} pb={3} mt={5}>
+      <VStack borderColor="#DCDCDC" bg="#c6eefbde" borderBottomWidth={1} p={1} pl={2} pb={3} mt={2} borderRadius={6}>
         <HStack space={3}>
           <Box w="18%">
             <Image source={{ uri: dog.image.url }} style={styles.pic} alt="anjing"/>

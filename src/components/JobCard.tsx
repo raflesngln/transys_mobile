@@ -17,7 +17,7 @@ const JobCard = ({ shipment }) => {
             shadow: 9,
             borderWidth: 2
           }} _light={{
-            backgroundColor: "#ffff"
+            backgroundColor: "#c6eefbde"
           }}
           shadow={5}
           >
@@ -133,7 +133,7 @@ function MenuActionLists(props:any):JSX.Element {
 
   return <Center >
     <TouchableOpacity activeOpacity={0.3} onPress={onOpen}>
-      <View  bg="#ffff" pl="2" pr="2" p="1" borderRadius={10} >
+      <View  bg="#c6eefbde" pl="2" pr="2" p="1" borderRadius={10} >
         <Text ><MaterialIcons name="keyboard-control" color='#000' size={25} /></Text>
       </View>
     </TouchableOpacity>

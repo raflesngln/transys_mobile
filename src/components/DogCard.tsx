@@ -9,7 +9,7 @@ const DogCard = ({ ListItems }) => {
   const navigation = useNavigation<any>();
 
   return(
-    <VStack w="100%" alignItems="center" space={2} mb={5} borderRadius={10}>
+    <VStack w="100%" alignItems="center" space={2} mb={3} borderRadius={10}>
       <Box maxW="100%" w="100%" rounded="lg"  borderColor="coolGray.200" borderWidth="1" _dark={{
             borderColor: "coolGray.600",
             backgroundColor: "gray.700"
@@ -17,7 +17,7 @@ const DogCard = ({ ListItems }) => {
             shadow: 9,
             borderWidth: 2
           }} _light={{
-            backgroundColor: "gray.50"
+            backgroundColor: "#c6eefbde"
           }}>
         
         <Stack p="4" space={3}>
@@ -65,7 +65,7 @@ const DogCard = ({ ListItems }) => {
             { screen: 'DetailJobs', params: { id: ListItems.id } })}>
           <VStack pr="3" space={3} >
               <Divider orientation="horizontal" w="100%" _light={{
-                bg: "#dcdcde"
+                bg: "gray.400"
               }} _dark={{
                 bg: "muted.50"
               }} />
@@ -77,7 +77,7 @@ const DogCard = ({ ListItems }) => {
                   <MaterialCommunityIcons name="arrow-right" color='#000' size={22} />
               </HStack>
               <Divider orientation="horizontal" w="100%" _light={{
-                bg: "#dcdcde"
+                bg: "gray.400"
               }} _dark={{
                 bg: "muted.50"
               }} />
@@ -115,7 +115,7 @@ function MenuActionLists(props:any):JSX.Element {
 
   return <Center >
     <TouchableOpacity activeOpacity={0.3} onPress={onOpen}>
-      <View  bg="#ffff" pl="2" pr="2" p="1" borderRadius={10} >
+      <View  bg="#c6eefbde" pl="2" pr="2" p="1" borderRadius={10} >
         <Text ><MaterialIcons name="keyboard-control" color='#000' size={25} /></Text>
       </View>
     </TouchableOpacity>

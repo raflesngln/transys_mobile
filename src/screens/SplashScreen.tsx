@@ -44,16 +44,7 @@ const SplashScreen = ({navigation}:any) => {
   }, []);
 
   return (
-    <LayoutBackground >
-      {/* <LinearGradient
-          // colors={['#0cc9b0','#fac15f','#0cc9b0' ]}
-          // colors={['#07aba5','#95f0ee','#07aba5' ]}
-          colors={['#0666eb','#0666eba3','#0666eb' ]}
-          style={styles.headerBox}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-        > */}
-
+    <LayoutBackground>
        <Flex style={styles.headerBox} pt="11" direction="column" justifyContent="center"  alignItems="center">         
           <Image
             source={require('../../assets/images/delivery2.png')}
@@ -76,8 +67,7 @@ const SplashScreen = ({navigation}:any) => {
             style={styles.activityIndicator}
             />
       </Box>
-      </Flex>      
-      {/* </LinearGradient> */}
+      </Flex>
     </LayoutBackground>
   );
 };
