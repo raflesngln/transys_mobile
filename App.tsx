@@ -40,7 +40,7 @@ const App = () => {
 
   const backgroundStyle = {
     // backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    backgroundColor: isDarkMode ? '#077087' : Colors.lighter,
+    backgroundColor: isDarkMode ? '#0e809b' : Colors.lighter,
   };
 
   // return (
