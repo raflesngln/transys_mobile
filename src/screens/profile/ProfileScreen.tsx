@@ -77,14 +77,7 @@ const ProfileScreen = (props:any) => {
             <SafeAreaView style={styles.container}>
           
             <Flex direction="row" mb="2.5" mt="-3">
-              <VStack space={4}  w='100%'>
-                {/* <LinearGradient
-                  // colors={['#0960d9','#438cf0','#0960d9']}
-                  colors={[COLORS.gradient1,COLORS.gradient2,COLORS.gradient3]}
-                  style={styles.headerBoxSettings}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                > */}
+              <VStack space={4} w='100%'>
                   <HStack style={styles.headerBoxSettings} bg="#00bcd44a" space={2} pl={1} flexDirection="row" justifyContent="center" justifyItems="center" >
                     <Box pl={4} h="95px" w="90px" rounded="full" shadow={3}>
                       <Avatar bg="#00bcd44a" alignSelf="center" size="xl" source={{
@@ -99,7 +92,6 @@ const ProfileScreen = (props:any) => {
                       <Text style={{fontSize:14,color:'#e3e6e8',fontWeight:'bold'}}>Programmer</Text>
                     </Box>
                   </HStack>
-              {/* </LinearGradient> */}
 
                 <Box w="100%"  h="100%" pl="3" minHeight="85%" mt="-23%" bg="#acdfefcf" roundedTopRight="30" roundedTopLeft="30" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
                     <Box pl="1" ml="2%" mb="3" maxWidth="75%" >
