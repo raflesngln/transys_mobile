@@ -93,7 +93,7 @@ const ProfileScreen = (props:any) => {
                     </Box>
                   </HStack>
 
-                <Box w="100%"  h="100%" pl="3" minHeight="85%" mt="-23%" bg="#acdfefcf" roundedTopRight="30" roundedTopLeft="30" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
+                <Box w="100%"  h="100%" pl="3" minHeight="85%" mt="-26%" bg="#acdfefcf" roundedTopRight="30" roundedTopLeft="30" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
                     <Box pl="1" ml="2%" mb="3" maxWidth="75%" >
                       <Text pt="5" style={{fontSize:26,color:'#4b5157'}}>My Profile's</Text>
                     </Box>

@@ -45,14 +45,14 @@ const SplashScreen = ({navigation}:any) => {
 
   return (
     <LayoutBackground>
-       <Flex style={styles.headerBox} pt="11" direction="column" justifyContent="center"  alignItems="center">         
+       <Flex style={styles.headerBox} direction="column" justifyContent="center"  alignItems="center">         
           <Image
             source={require('../../assets/images/delivery2.png')}
-            style={{width: '75%',resizeMode: 'contain',marginTop:'35%',marginLeft:'-2%'}}
+            style={{width: '75%',resizeMode: 'contain',marginTop:'20%',marginLeft:'-2%'}}
             />
         <Box>
           <Heading>
-              <Text mt="5" color="#cffffd" style={{fontSize:30,paddingTop:15}} >Online Delivery System</Text>
+              <Text mt="5" color="#cffffd" style={{fontSize:30}} >Online Delivery System</Text>
           </Heading>
         </Box>
         <Box style={styles.box_circle}>
