@@ -4,6 +4,7 @@ import { Dimensions, ImageBackground, Pressable, StyleSheet ,TouchableOpacity} f
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAppSelector } from '@redux/hooks';
 
 var deviceHeight:any = Dimensions.get('window').height;
 var deviceWidth:any = Dimensions.get('window').width;
@@ -11,7 +12,8 @@ var deviceWidth:any = Dimensions.get('window').width;
 // const image = { uri: "https://www.baltana.com/files/wallpapers-5/Blue-Background-Wallpaper-HD-16273.jpg" };
 const image = { uri: "https://i.pinimg.com/564x/4c/7a/b1/4c7ab1da89e96e9051005526164af8ed.jpg" };
 
-const App = () =>{
+function HomePage (){
+  const redux_profile = useAppSelector((state: any) => state.login)
   const [itemData, setItemData] = useState<undefined | any>([])
   const [itemDataUsers, setItemDataUsers] = useState<undefined | any>()
   const [products, setProducts] = useState<undefined | any>()
@@ -71,7 +73,7 @@ const App = () =>{
            </HStack>
 
             <Text color="gray.200" mt={2} mb={2}>Welcome,</Text>
-            <Text style={styles.textBig}>Rafles Nainggolan</Text>
+            <Text style={styles.textBig}>{redux_profile.dataLogin.name}</Text>
           </Box>
           <Box>
             <Avatar bg="green.500" source={{
@@ -121,7 +123,7 @@ const App = () =>{
         </HStack>
 
             <HStack mt={4} pl={3} pr={2} justifyContent="space-between">
-            <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>Courier</Text>
+            <Text color="gray.200" fontWeight="700" style={{fontSize:17}}>Courier</Text>
             <Text color='gray.200'>See All <MaterialIcons name="keyboard-arrow-right" color='#ffff' size={15} /></Text>
           </HStack>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
@@ -148,7 +150,7 @@ const App = () =>{
 
           <VStack space={1}>
             <HStack justifyContent="space-between">
-              <Box><Text pl="3" pb="2" pt="4" color="gray.200" fontWeight="700" fontSize={16}>Shipment History</Text></Box>
+              <Box><Text pl="3" pb="2" pt="4" color="gray.200" fontWeight="700" fontSize={16}>Last Shipment</Text></Box>
               <Box><Text pt={4} pr={2} color="gray.200" >See More <MaterialIcons name="keyboard-arrow-right" color='#ffff' size={15} style={{marginTop:15}}/></Text></Box>
             </HStack>
             {
@@ -180,7 +182,7 @@ const App = () =>{
 
         <VStack p={1} pb={3} mt={5} space={2} w="100%" >
           <HStack justifyContent="space-between">
-            <Text pl="3" color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>Annouchement</Text>
+            <Text pl="3" color="gray.200" fontWeight="700" style={{fontSize:17}}>Annouchement</Text>
             <Text color='gray.200'>See All <MaterialIcons name="keyboard-arrow-right" color='#ffff' size={15} /></Text>
           </HStack>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
@@ -228,8 +230,8 @@ const App = () =>{
               </HStack>
             </ScrollView>
         </VStack>
-        <Box>
-          {/* <Text> DATA2{JSON.stringify(itemData)}</Text> */}
+        <Box mt="50">
+            <Text>&nbsp;</Text>
         </Box>
       </ScrollView>
       </SafeAreaView>
@@ -318,4 +320,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default HomePage;
