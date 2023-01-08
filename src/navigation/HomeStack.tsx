@@ -2,7 +2,8 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeStackNavigatorParamList } from './types';
 
-import HomeScreen from '../screens/home/HomeScreen';
+// import HomeScreen from '../screens/home/HomeScreen';
+import HomePage from '../screens/home/HomePage';
 import DetailsScreen from '../screens/home/DetailsScreen';
 import TrackingScreen from '../screens/home/TrackingScreen';
 import DetailProduct from '../screens/home/DetailProduct';
@@ -23,7 +24,7 @@ const HomeStackNavigator = () => {
         }}
         initialRouteName="HomeScreenPage"
     >
-      <HomeStack.Screen  name="HomeScreenPage" component={HomeScreen} />
+      <HomeStack.Screen  name="HomeScreenPage" component={HomePage} />
       <HomeStack.Screen name="Details" component={DetailsScreen} />
       <HomeStack.Screen name="CategoryCourse" component={TrackingScreen} />
       <HomeStack.Screen name="DetailProduct" component={DetailProduct}/>

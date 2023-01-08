@@ -17,7 +17,7 @@ import profileReducer from './apps/ProfileSlice';
 // });
 
 const persistConfig = {
-  key: 'rootAppTrackingAtt',
+  key: 'rootAppTransys',
   version: 1,
   storage: AsyncStorage,
   whitelist: ['login'],

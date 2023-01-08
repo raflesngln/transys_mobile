@@ -10,6 +10,7 @@ import { BottomTabNavigatorParamList } from './types';
 
 import HomeStackNavigator from './HomeStack';
 import HomeScreen from '@screens/home/HomeScreen';
+import HomePage from '@screens/home/HomePage';
 import Jobslist from '@screens/jobs/JobsList';
 import MessageStack from '@navigation/MessageStack';
 import ProfileStack from '@navigation/ProfileStack';
@@ -73,7 +74,7 @@ const BottomTabs = () => {
       <Tab.Screen
         name="Home"
         // component={HomeStackNavigator}
-        component={HomeScreen}
+        component={HomePage}
         options={{ 
             tabBarLabel: 'Home',
             tabBarIcon: ({ color, size }) => (

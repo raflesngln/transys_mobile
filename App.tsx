@@ -28,6 +28,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import HomePage from '@screens/home/HomePage';
+import RootNavigator from '@navigation/index';
+import { Provider } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import {persistor, store } from './src/redux/store'
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -37,14 +43,33 @@ const App = () => {
     backgroundColor: isDarkMode ? '#077087' : Colors.lighter,
   };
 
+  // return (
+  //   <>
+  //     <StatusBar
+  //       barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+  //       backgroundColor={backgroundStyle.backgroundColor}
+  //     />
+  //     {/* <HomePage/> */}
+  //     <RootNavigator/>
+  //   </>
+  // );
+
   return (
     <>
-      <StatusBar
+    <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      {/* <HomePage/> */}
-      <HomePage/>
+    <Provider store={store}>
+      {/* <QueryClientProvider client={my_queryClient}> */}
+        <PersistGate loading={null} persistor={persistor}>
+          {/* <NativeBaseProvider theme={mytheme}> */}
+            <RootNavigator />
+            {/* <Text>{JSON.stringify(mytheme)}</Text> */}
+          {/* </NativeBaseProvider> */}
+        </PersistGate>
+        {/* </QueryClientProvider> */}
+    </Provider>
     </>
   );
 };
