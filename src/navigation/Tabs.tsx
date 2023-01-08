@@ -46,8 +46,8 @@ const BottomTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarActiveTintColor: "#024ce0",
-        tabBarInactiveTintColor: "#707273",
+        tabBarActiveTintColor: "#13bdbd",
+        tabBarInactiveTintColor: "#7d7d7d",
         headerShown: false,
         gestureEnabled: true,
         unmountOnBlur: true,
@@ -62,7 +62,7 @@ const BottomTabs = () => {
           borderTopLeftRadius:15,
           position: 'absolute',
           // backgroundColor: '#0e4ca1',
-          backgroundColor: '#ffff',
+          backgroundColor: '#fff',
       },
         pressColor: 'gray',
         tabBarLabelStyle: {
@@ -106,7 +106,7 @@ const BottomTabs = () => {
                   bottom:-5,
                   // backgroundColor: '#175fc2',
                   backgroundColor: '#ebeced',
-                  borderColor:COLORS.primary,
+                  borderColor:'#067878',
                   borderWidth: 5,
                   overflow: 'hidden',
                   shadowColor: 'black',
@@ -122,7 +122,7 @@ const BottomTabs = () => {
                   height: 40,
                   tintColor: color,
                   alignContent: 'center',
-                  shadowColor: '#05f28b',
+                  shadowColor: '#13bdbd',
                   shadowOffset: {width: 12, height: 24},
                   shadowOpacity: 2,
                   shadowRadius: 5,
