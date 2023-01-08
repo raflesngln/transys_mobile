@@ -8,6 +8,7 @@ import { useAppSelector } from '@redux/hooks';
 
 var deviceHeight:any = Dimensions.get('window').height;
 var deviceWidth:any = Dimensions.get('window').width;
+import LayoutBackground from '@components/LayoutBackground'
 
 // const image = { uri: "https://www.baltana.com/files/wallpapers-5/Blue-Background-Wallpaper-HD-16273.jpg" };
 const image = { uri: "https://i.pinimg.com/564x/4c/7a/b1/4c7ab1da89e96e9051005526164af8ed.jpg" };
@@ -50,20 +51,19 @@ function HomePage (){
   }, []);
   
   const getDetailShipment=()=> {
-    console.log('Function not implemented.');
+    console.log(' get detail');
   }
-
+//   bg="#93f0fb40"
   return(
   <View style={styles.container}>
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        
+    <LayoutBackground>
       <View style={[styles.maincontainer]}>
-
         <SafeAreaView style={{backgroundColor:'#00bcd44a',zIndex:999,marginTop:"0%",borderTopLeftRadius:20,borderTopRightRadius:20}}>
         <ScrollView showsVerticalScrollIndicator={false} >
-        <HStack justifyContent="space-between" bg="#9cf4ff36" h="130" p={2} borderBottomLeftRadius={2} borderBottomRightRadius={70} zIndex={1}>
-          <Box>
+        <HStack justifyContent="space-between" w="100%" bg="#93f0fb40" h="140"  borderBottomLeftRadius={2} borderBottomRightRadius={70} zIndex={1}  >
+          <Box p={2}>
            <HStack space={3} mb={2}>
+                <TouchableOpacity>
                 <Stack>
                     <Badge // bg="red.400"
                         colorScheme="danger" rounded="full" mb={-3} mr={-2} zIndex={1} variant="solid" alignSelf="flex-end" _text={{
@@ -71,11 +71,13 @@ function HomePage (){
                         }}>
                         99+
                     </Badge>
-                    <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
+                    <Text style={{backgroundColor:'#93f0fb7a',padding:7,borderRadius:10}}>
                     <MaterialIcons name="notifications" color='#ffff' size={20} />
                     </Text>
                 </Stack>
+                </TouchableOpacity>
 
+                <TouchableOpacity>
                 <Stack>
                     <Badge // bg="red.400"
                         colorScheme="danger" rounded="full" mb={-3} mr={-2} zIndex={1} variant="solid" alignSelf="flex-end" _text={{
@@ -83,61 +85,59 @@ function HomePage (){
                         }}>
                         2
                     </Badge>
-                    <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
+                    <Text style={{backgroundColor:'#93f0fb7a',padding:7,borderRadius:10}}>
                     <MaterialIcons name="email" color='#ffff' size={20} />
                     </Text>
                 </Stack>
-
+                </TouchableOpacity>
            </HStack>
 
             <Text color="gray.200" mt={2} mb={2}>Welcome,</Text>
             <Text style={styles.textBig}>{redux_profile.dataLogin.name}</Text>
           </Box>
-          <Box>
+          <Box p={2}>
             <Avatar bg="green.500" source={{
                 uri: "https://hris.att-group.co.id/assets/images/karyawan/F01A-150885933/tmp/F01A-150885933-26102021134633.jpeg"
-              }}> RN
+              }} size="lg"> RN
               </Avatar>
           </Box>
         </HStack>
           
         <HStack  p={2} pt={5} space={3} justifyContent="space-between">
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
               <Center><MaterialIcons name="360" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Track</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
+          </Button>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
               <Center><MaterialIcons name="control-point" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>New</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
+          </Button>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
               <Center><MaterialIcons name="addchart" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Approval</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
+          </Button>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
               <Center><MaterialIcons name="airplanemode-on" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Jobs</Text></Center>
-          </Box>
+          </Button>
         </HStack>
         <HStack p={2} pt={3} space={3} justifyContent="space-between">
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-          <TouchableOpacity activeOpacity={0.4} onPress={()=>getDetailShipment()}>
-              <Center><MaterialIcons name="donut-small" style={styles.iconColor} size={30} /></Center>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7} onPress={()=>getDetailShipment()}>
+            <Center><MaterialIcons name="donut-small" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Info</Text></Center>
-          </TouchableOpacity>
-          </Box>
-          <Button opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9} onPress={()=>getDetailShipment()}>
+          </Button>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7} onPress={()=>getDetailShipment()}>
             <Center><MaterialIcons name="access-time" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Notif</Text></Center>
           </Button>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
               <Center><MaterialIcons name="equalizer" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Message</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
+          </Button>
+          <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
               <Center><MaterialIcons name="contactless" style={styles.iconColor} size={30} /></Center>
             <Center><Text style={styles.textDefault}>Status</Text></Center>
-          </Box>
+          </Button>
         </HStack>
 
             <HStack mt={4} pl={3} pr={2} justifyContent="space-between">
@@ -145,14 +145,26 @@ function HomePage (){
             <Text color='gray.200'>See All <MaterialIcons name="keyboard-arrow-right" color='#ffff' size={15} /></Text>
           </HStack>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
-              <HStack p={2} justifyContent="space-between" space={1}>
+              <HStack p={2} justifyContent="space-between" space={1} w="98%">
                 {
                   Courier && Courier.map((val:any,i:number)=>{
-                    return  <Box key={i}  bg="#9dd8eba8" borderRadius={6} borderWidth={1} borderColor="#cdd0d154" p={2}>
+                    return  <Pressable key={i} onPress={()=>getDetailShipment()} 
+                    style={({ pressed }) => [
+                    {
+                      backgroundColor: pressed
+                        ? '#c6eefbde'
+                        : '#c6eefbbf',
+                        width:'20%',
+                        opacity:pressed?0.4:1,
+                        borderRadius:9
+                    }
+                  ]}>
+
+                    <Box key={i}  bg="#9dd8eba8" borderRadius={6} borderWidth={1} borderColor="#cdd0d154" p={2}>
                     <HStack>
                     <Avatar bg="green.500" source={{
                         uri:val.avatar
-                      }} size="sm"> AJ
+                    }} size="sm"> AJ
                       </Avatar>
                       <Box pl={2}>
                       <Text>{val.name}</Text>
@@ -160,6 +172,7 @@ function HomePage (){
                       </Box>
                     </HStack>
                   </Box>
+                </Pressable>
 
                   })
                 }
@@ -208,7 +221,7 @@ function HomePage (){
                 {
                   itemData && itemData.map((val:any,i:any)=>{
                     return  <VStack key={i}  bg="#9dd8eba8" w={deviceWidth/3} pt={0} borderRadius={8} borderWidth={1} borderColor="#cdd0d154" >
-                      <Stack w="100%" bg="#000">
+                      <Stack w="100%" >
                         <Image source={{
                               uri: val.avatar
                             }} alt="image" w="100%" h={110}  />
@@ -230,10 +243,10 @@ function HomePage (){
                 {
                   products && products.map((val:any,i:any)=>{
                     return  <VStack key={i}  bg="#9dd8eba8" w={deviceWidth/3} borderRadius={10} borderWidth={1} borderColor="#cdd0d154" p={2}>
-                      <Stack w="100%" bg="#000">
+                      <Stack w="100%" >
                         <Image source={{
                               uri: val.thumbnail
-                            }} alt="image" w="100%" h={130} />
+                            }} alt="image" w="100%" h={120} />
                     </Stack>
                     <HStack>
                       <Box pl={2}>
@@ -254,7 +267,7 @@ function HomePage (){
       </ScrollView>
       </SafeAreaView>
       </View>
-    </ImageBackground>
+      </LayoutBackground>
   </View>
   );
 }
@@ -292,9 +305,24 @@ const Courier:{}[]=[
     avatar:'https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
   },
 ]
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  headerStyle:{
+    flex:1,
+    backgroundColor:'93f0fb40',
+    top:0,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //     width: 0,
+    //     height: 6,
+    // },
+    // shadowOpacity: 0.37,
+    // shadowRadius: 7.49,
+
+    // elevation: 12,
   },
   maincontainer: {
     display:'flex',

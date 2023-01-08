@@ -14,7 +14,6 @@ import {
   RefreshControl,
   TouchableHighlight,
   TouchableOpacity,
-  TouchableNativeFeedback
 } from 'react-native';
 
 import { AspectRatio ,Text,Image,Box,Container, Heading, Center, NativeBaseProvider,VStack ,ZStack,HStack ,Flex, Spacer,Stack,ScrollView,Divider,FlatList,SectionList,Avatar,Badge, Button } from "native-base";
@@ -29,22 +28,18 @@ import { setDataLogin, logout } from '@redux/apps/LoginSlice'
 // import Navigator Stack
 import { HomeScreenNavigation } from '@navigation/types';
 import { RootNavigation } from '@navigation/types';
+import LayoutBackground from '@components/LayoutBackground';
 
 
 
 const ProfileScreen = (props:any) => {
   const route = useRoute();
   return (
-    <View style={{ flex: 1 }}>
+    <LayoutBackground>
       <Content/>
-    </View>
+    </LayoutBackground>
   );
 };
-
-const wait = (t:any, v:any) => {
-  // return new Promise(resolve => setTimeout(resolve, timeout));
-  return new Promise(resolve => setTimeout(resolve, t, v));
-}
 
   function Content(){
   const navigation = useNavigation<HomeScreenNavigation>(); // check which routes is navigates
@@ -83,54 +78,68 @@ const wait = (t:any, v:any) => {
           
             <Flex direction="row" mb="2.5" mt="-3">
               <VStack space={4}  w='100%'>
-                <LinearGradient
+                {/* <LinearGradient
                   // colors={['#0960d9','#438cf0','#0960d9']}
                   colors={[COLORS.gradient1,COLORS.gradient2,COLORS.gradient3]}
                   style={styles.headerBoxSettings}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
-                >
-                  <HStack space={2} ml="2%" mt="-18%" flexDirection="row" justifyContent="center" justifyItems="center" >
-                    <Center h="95px" w="95px" bg="primary.300" rounded="full" shadow={3}>
-                      <Avatar bg="purple.600" alignSelf="center" size="xl" source={{
+                > */}
+                  <HStack style={styles.headerBoxSettings} bg="#00bcd44a" space={2} pl={1} flexDirection="row" justifyContent="center" justifyItems="center" >
+                    <Box pl={4} h="95px" w="90px" rounded="full" shadow={3}>
+                      <Avatar bg="#00bcd44a" alignSelf="center" size="xl" source={{
                           uri: "https://hris.att-group.co.id/assets/images/karyawan/F01A-150885933/tmp/F01A-150885933-26102021134633.jpeg"
                         }}>
                             EM
                       </Avatar>
-                    </Center>
-                    <Box minHeight="110px" p="2" pl="3%" maxWidth="75%" bg="transparent" rounded="md" >
+                    </Box>
+                    <Box minHeight="110px" p="2" pl="3%" maxWidth="75%" rounded="md" >
                       <Text style={{fontSize:22,color:'#ffffff',fontWeight:'bold'}}>{redux_profile.dataLogin.name}</Text>
                       <Text style={{fontSize:14,color:'#e3e6e8',fontWeight:'bold'}}>{redux_profile.dataLogin.username}</Text>
                       <Text style={{fontSize:14,color:'#e3e6e8',fontWeight:'bold'}}>Programmer</Text>
                     </Box>
                   </HStack>
-              </LinearGradient>
+              {/* </LinearGradient> */}
 
-                <Box w="100%" pt="5" h="auto" p="2" pl="3" minHeight="85%" mt="-25%" bg="#ffffff" roundedTopRight="30" roundedTopLeft="30" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
-                    <Box p="1" ml="2%" mb="3" maxWidth="75%" bg="transparent" >
+                <Box w="100%"  h="100%" pl="3" minHeight="85%" mt="-23%" bg="#acdfefcf" roundedTopRight="30" roundedTopLeft="30" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
+                    <Box pl="1" ml="2%" mb="3" maxWidth="75%" >
                       <Text pt="5" style={{fontSize:26,color:'#4b5157'}}>My Profile's</Text>
                     </Box>
 
-                    <Box p="1" mt="1" ml="2%" maxWidth="75%" bg="transparent" >
-                      <Text style={{fontSize:16,color:'#b6bab8'}} bold>Basic Settings</Text>
+                    <Box p="1" mt="1" ml="2%" maxWidth="75%" >
+                      <Text style={{fontSize:16,color:'#779ca591'}} bold>Basic Settings</Text>
                     </Box>
                     <ListSettings/>
                     
-                    <Box p="1" mt="6" ml="2%" maxWidth="75%" bg="transparent" >
-                      <Text style={{fontSize:16,color:'#b6bab8'}} bold>Other Settings</Text>
+                    <Box mt={4}>
+                      <Text style={{fontSize:16,color:'#779ca591'}} bold>HELP</Text>
                     </Box>
 
-                    <Pressable
-                            onPress={() =>
-                              navigation.navigate('DetailProduct', {
-                                title: 'Detail Course',
-                                id:''
-                              })
-                            }
-                      >
+                    <Box mt="3" ml="2%" maxWidth="100%" >
+                      <TouchableOpacity>
+                      <HStack justifyContent="space-between" pb={2} mb="5" borderBottomColor="#779ca591" borderBottomWidth={1}>
+                        <Text w="10%"><MaterialCommunityIcons name="help-box" color={'#4b5157'} size={25} /></Text>
+                        <Text w="80%">Help Support</Text>
+                        <Text w="7%"><MaterialCommunityIcons name="chevron-right" color={'#888b8f'} size={25} /></Text>
+                      </HStack>
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                      <HStack justifyContent="space-between" pb={2} borderBottomColor="#779ca591" borderBottomWidth={1}>
+                        <Text w="10%"><MaterialCommunityIcons name="information" color={'#4b5157'} size={25} /></Text>
+                        <Text w="80%">FAQ</Text>
+                        <Text w="7%"><MaterialCommunityIcons name="chevron-right" color={'#888b8f'} size={25} /></Text>
+                      </HStack>
+                      </TouchableOpacity>
+                    </Box>
+
+                    <Box p="1" mt="6" ml="2%" maxWidth="75%" >
+                      <Text style={{fontSize:16,color:'#779ca591'}} bold>Other Settings</Text>
+                    </Box>
+
+                    <TouchableOpacity>
                     <Box borderBottomWidth="1" _dark={{
-                          borderColor: "#d7dbd9"
-                        }} borderColor="#d7dbd9" pl={["0", "4"]} pr={["0", "5"]} py="2">
+                          borderColor: "#779ca591"
+                        }} borderColor="#779ca591" pl={["0", "4"]} pr={["0", "5"]} py="2">
                       <HStack space={[2, 3]} justifyContent="space-between">
                           <MaterialCommunityIcons name="account-key" color={'#4b5157'} size={25} />
                         <VStack>
@@ -148,30 +157,27 @@ const wait = (t:any, v:any) => {
                         </Text>
                       </HStack>
                     </Box>
-                    </Pressable>
+                    </TouchableOpacity>
                     
                       <TouchableOpacity onPress={()=>LogoutUser()}>
-                      <Box borderBottomWidth="1" _dark={{
-                            borderColor: "#d7dbd9"
-                          }} borderColor="#d7dbd9" pl={["0", "4"]} pr={["0", "5"]} py="2">
-                        <HStack space={[2, 3]} justifyContent="flex-start">
-                          <MaterialCommunityIcons name="exit-to-app" color={'#4b5157'} size={25} />
-                          <VStack>
-                            <Text _dark={{
-                                  color: "warmGray.50"
-                                }} color="coolGray.800" bold>
-                                Log-Out
-                            </Text>
-                          </VStack>
-                        </HStack>
-                      </Box>
-                    </TouchableOpacity>
-
-                    {/* <Button onPress={()=>ChangeRedux()}>Change Redux</Button>
-                    <Text style={{color:'#f00a47'}}>
-                      Redux : {JSON.stringify(redux_profile.dataLogin)}
-                    </Text> */}
-
+                        <Box borderBottomWidth="1" _dark={{
+                              borderColor: "#779ca591"
+                            }} borderColor="#779ca591" pl={["0", "4"]} pr={["0", "5"]} py="2">
+                          <HStack space={[2, 3]} justifyContent="flex-start">
+                            <MaterialCommunityIcons name="exit-to-app" color={'#4b5157'} size={25} />
+                            <VStack>
+                              <Text _dark={{
+                                    color: "warmGray.50"
+                                  }} color="coolGray.800" bold>
+                                  Log-Out
+                              </Text>
+                            </VStack>
+                          </HStack>
+                        </Box>
+                      </TouchableOpacity>
+                    <Center mt={9}>
+                      <Text color="#000">Version : 1.0</Text>
+                    </Center>
                 </Box>
               </VStack>
             </Flex>
@@ -201,9 +207,9 @@ const wait = (t:any, v:any) => {
       return <Box>
           <FlatList data={data} renderItem={({
               item
-            }) => <Box h="50px" borderBottomWidth="1" _dark={{
-              borderColor: "#d7dbd9"
-            }} borderColor="#d7dbd9" pl={["0", "4"]} pr={["0", "5"]} py="2">
+            }) => <TouchableOpacity><Box h="50px" borderBottomWidth="1" _dark={{
+              borderColor: "#779ca591"
+            }} borderColor="#779ca591" pl={["0", "4"]} pr={["0", "5"]} py="2">
             <HStack space={[2, 3]} justifyContent="space-between">
                 <MaterialCommunityIcons name={`${item.icon}`} color={'#4b5157'} size={25} />
               <VStack>
@@ -220,7 +226,7 @@ const wait = (t:any, v:any) => {
                   <MaterialCommunityIcons name="chevron-right" color={'#888b8f'} size={25} />
               </Text>
             </HStack>
-          </Box>} keyExtractor={item => item.id} />
+          </Box></TouchableOpacity>} keyExtractor={item => item.id} />
         </Box>;
     };
     
@@ -253,9 +259,10 @@ const wait = (t:any, v:any) => {
       },
       headerBoxSettings: {
         alignItems: 'flex-start',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         height: 250,
         width:'100%',
+        paddingTop:20
       },
     });
 

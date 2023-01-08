@@ -42,6 +42,7 @@ import JobCard from "@components/JobCard";
 import { fetchJobListKEY } from "@services/variableKEY";
 import {getAll,create} from '@services/shipment/shipmentService'
 import { focusManager } from '@tanstack/react-query';
+import LayoutBackground from '@components/LayoutBackground';
 
 var deviceHeight:any = Dimensions.get('window').height;
 var deviceWidth:any = Dimensions.get('window').width;
@@ -56,9 +57,9 @@ const JoblistScreen = (props:any) => {
   // const { title } = route.params;
 
   return (
-    <View style={{ flex: 1 }}>
+    <LayoutBackground>
       <Content/>
-    </View>
+    </LayoutBackground>
   );
 };
 
@@ -107,16 +108,9 @@ const JoblistScreen = (props:any) => {
         return (
           <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
-            <Flex direction="row" mb="2" mt="-15%">
-              <VStack space={2}  w='100%'>
-                <LinearGradient
-                  // colors={['#0960d9','#438cf0','#0960d9']}
-                  colors={[COLORS.gradient1,COLORS.gradient2,COLORS.gradient3 ]}
-                  style={styles.headerBox}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                >
-              <Box mt="19%">
+            <Flex direction="row" mb="2">
+              <VStack space={2}  w='100%'  bg="#00bcd44a" pt={3}>
+              <Box style={{height:180}}>
                 <VStack mt="-3%">
                   <Box mb="2">
                     <Box p="2" display="flex" flexDirection="row" justifyContent="space-between">
@@ -125,7 +119,7 @@ const JoblistScreen = (props:any) => {
                       </Box>
                       <HStack space={2}>
                         <Box pl="1">
-                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg="#10c2bc" borderColor="#10c2bc" borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
+                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg="#2ebae7cf" borderColor="#2ebae7cf" borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
                         </Box>
                         <Box>
                             <MenuFilterShipment/>
@@ -141,10 +135,9 @@ const JoblistScreen = (props:any) => {
                   </Box>
                 </VStack>
               </Box>
-              </LinearGradient>
               </VStack>
             </Flex>
-            <VStack p="2" mt="-13%" bg="coolGray.200" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
+            <VStack p="2" mt="-15%" bg="gray.200" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
               <Box h="70%" w="100%" mb="50">
                 <ShipmentList refresh={()=>refrehData()}/>
               </Box>
@@ -297,7 +290,7 @@ function MenuActionSearchShipment():JSX.Element {
   },[])
   
   return <Box >
-    <Button  onPress={()=>{onOpen();setTextSearch('')}} bg="#545b83"  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="search" color='#ffff' size={18} /></Button>
+    <Button  onPress={()=>{onOpen();setTextSearch('')}} bg="#8fe4ff9e"  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="search" color='#0b739b' size={18} /></Button>
     
       <Actionsheet isOpen={isOpen} onClose={onClose} size="full" justifyContent="flex-start" bg="coolGray.600" pt="10%" top={0}   >
         <VStack w="100%" bg="#ffff" h="100%" space={5}>
@@ -420,7 +413,7 @@ function MenuFilterShipment(props:any):JSX.Element {
   }
 
   return <Center >
-    <Button onPress={onOpen} bg="#545b83"  h="42" w="42" variant="subtle" size="sm" rounded="full"><MaterialIcons name="filter-list" color='#ffff' size={19} /></Button>
+    <Button onPress={onOpen} bg="#8fe4ff9e"  h="42" w="42" variant="subtle" size="sm" rounded="full"><MaterialIcons name="filter-list" color='#0b739b' size={19} /></Button>
 
       <Actionsheet isOpen={isOpen} onClose={onClose} hideDragIndicator={false} >
         <Actionsheet.Content mb="-8%" pb="10" justifyContent='flex-start'>
@@ -523,10 +516,6 @@ function MenuFilterShipment(props:any):JSX.Element {
         fontSize:25,
         color:'#ffff',
         fontWeight:'bold'
-      },
-      headerBox: {
-        minHeight: 250,
-        width:'100%',
       },
       // Style for iOS ONLY...
       datePicker: {
