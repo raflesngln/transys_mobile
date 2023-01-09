@@ -13,7 +13,7 @@ import Header from '@components/Header';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import LoadinAnimation from '@components/LoadingAnimation';
+// import LoadinAnimation from '@components/LoadingAnimation';
 import IndicatorLoading from '@components/indicatorLoading';
 import ProgressingIndicator from '@components/Progressing'
 

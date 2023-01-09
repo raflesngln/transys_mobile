@@ -43,17 +43,6 @@ const App = () => {
     backgroundColor: isDarkMode ? '#0e809b' : Colors.lighter,
   };
 
-  // return (
-  //   <>
-  //     <StatusBar
-  //       barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-  //       backgroundColor={backgroundStyle.backgroundColor}
-  //     />
-  //     {/* <HomePage/> */}
-  //     <RootNavigator/>
-  //   </>
-  // );
-
   return (
     <>
     <StatusBar

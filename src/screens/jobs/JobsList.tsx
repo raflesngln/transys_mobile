@@ -119,7 +119,7 @@ const JoblistScreen = (props:any) => {
                       </Box>
                       <HStack space={2}>
                         <Box pl="1">
-                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg="#2ebae7cf" borderColor="#2ebae7cf" borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
+                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg={COLORS.Button100} borderColor={COLORS.Button200} borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
                         </Box>
                         <Box>
                             <MenuFilterShipment/>
@@ -137,7 +137,7 @@ const JoblistScreen = (props:any) => {
               </Box>
               </VStack>
             </Flex>
-            <VStack p="2" mt="-15%" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" shadow={5}>
+            <VStack p="2" mt="-15%" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" >
               <Box h="70%" w="100%" mb="50">
                 <ShipmentList refresh={()=>refrehData()}/>
               </Box>
@@ -200,7 +200,6 @@ useEffect(() => {
 
     return (
     <SafeAreaView style={{ flex: 1 }}>
-      {/* <Text>{deviceHeight*2}</Text> */}
           <FlashList
             keyExtractor={(item:any) => item.pid}
             data={data.data}
@@ -291,10 +290,10 @@ function MenuActionSearchShipment():JSX.Element {
   
   return <Box >
     <Button  onPress={()=>{onOpen();setTextSearch('')}} bg="#8fe4ff9e"  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="search" color='#0b739b' size={18} /></Button>
-    
+    <LayoutBackground>
       <Actionsheet isOpen={isOpen} onClose={onClose} size="full" justifyContent="flex-start" bg="coolGray.600" pt="10%" top={0}   >
         <VStack w="100%" bg="#ffff" h="100%" space={5}>
-          <HStack p={2} justifyContent="space-between" bg={COLORS.primary} w="100%">
+          <HStack p={2} justifyContent="space-between" bg={COLORS.headerBg} w="100%">
             <Box w="90%">
                 <Input bg="#ffff" placeholder="Search" variant="outline" width="100%" borderRadius="15" py="1" px="2" fontSize={16}
                   InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<MaterialIcons name="search" color="#000" size={25} />} />} 
@@ -370,6 +369,7 @@ function MenuActionSearchShipment():JSX.Element {
           </ScrollView>
         </VStack>
       </Actionsheet>
+      </LayoutBackground>
     </Box>;
 }
 

@@ -20,6 +20,8 @@ import { AspectRatio ,Text,Image,Box,Container, Heading, Center, NativeBaseProvi
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient'
 import COLORS from '@config/colors'
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+
 
 import {TextCustom} from '@components/TextCustom';
 import { useAppSelector, useAppDispatch } from '@redux/hooks'
@@ -44,19 +46,14 @@ const ProfileScreen = (props:any) => {
   function Content(){
   const navigation = useNavigation<HomeScreenNavigation>(); // check which routes is navigates
   const navigationRoot = useNavigation<RootNavigation>(); // check which routes is navigates
+  const userFCM = auth().currentUser;
 
   const[jam,setJam]=React.useState(null);
   const [refreshing, setRefreshing] = React.useState(false);
   const redux_profile = useAppSelector((state) => state.login)
   const dispatch = useAppDispatch()
 
-  const onRefresh = React.useCallback(() => {
-      setRefreshing(true);
-      // wait(2000).then(() => setRefreshing(false));
-      setTimeout(()=>{
-        setRefreshing(false)
-      },2000)
-    }, []);
+
   
     const ChangeRedux=()=>{
       console.log('ChangeRedux Datas')
@@ -90,6 +87,7 @@ const ProfileScreen = (props:any) => {
                       <Text style={{fontSize:22,color:'#ffffff',fontWeight:'bold'}}>{redux_profile.dataLogin.name}</Text>
                       <Text style={{fontSize:14,color:'#e3e6e8',fontWeight:'bold'}}>{redux_profile.dataLogin.username}</Text>
                       <Text style={{fontSize:14,color:'#e3e6e8',fontWeight:'bold'}}>Programmer</Text>
+                      <Text style={{fontSize:14,color:'#e3e6e8',fontWeight:'bold'}}>{JSON.stringify(userFCM)}</Text>
                     </Box>
                   </HStack>
 

@@ -14,6 +14,7 @@ import { useRoute } from '@react-navigation/native';
 import CardSkeleton from '@components/CardSkeleton';
 import { fetchDogSingle } from '@services/sample_api/fetchSampleData';
 import { useQuery } from '@tanstack/react-query';
+import LayoutBackground from '@components/LayoutBackground';
 
 export const BANNER_H = 360;
 export const TOPNAVI_H = 50;
@@ -37,13 +38,13 @@ export default function MessageDetail(){
 
   const {status,isLoading,isFetching,data,error,refetch} = useQuery(['single_dogs',title], ()=>fetchDogSingle({id:title}));
   
-  if (isLoading) return <VStack mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/><CardSkeleton/></VStack>
+  if (isLoading) return <LayoutBackground mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/><CardSkeleton/></LayoutBackground>
   if (error) return <Box><Text>{error.message}</Text></Box> 
-  if (isFetching) return <VStack mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/><CardSkeleton/></VStack>
+  if (isFetching) return <LayoutBackground mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/><CardSkeleton/></LayoutBackground>
 
 
     return (
-      <View>
+      <LayoutBackground>
         <TopNavigation title={data && data.name} scrollA={scrollA} />
         <Animated.ScrollView
           // onScroll={e => console.log(e.nativeEvent.contentOffset.y)}
@@ -65,7 +66,7 @@ export default function MessageDetail(){
           </View>
           <ContentBodyDetail title={title} imageFetch={(e:any)=>setImageHeader(e)} />
         </Animated.ScrollView>
-      </View>
+      </LayoutBackground>
     );
 };
 
@@ -73,9 +74,9 @@ const ContentBodyDetail = (props:any) => {
 
 const {status,isLoading,isFetching,data,error,refetch} = useQuery(['single_dogs',props], ()=>fetchDogSingle({id:props.title}));  
   
-if (isLoading) return <VStack mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/></VStack>
+if (isLoading) return <LayoutBackground mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/></LayoutBackground>
 if (error) return <Box><Text>{error.message}</Text></Box> 
-if (isFetching) return <VStack mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/></VStack>
+if (isFetching) return <LayoutBackground mt={9} p={2}><CardSkeleton/><CardSkeleton/><CardSkeleton/></LayoutBackground>
 
   return (
     <Box>

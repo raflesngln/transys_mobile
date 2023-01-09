@@ -119,7 +119,7 @@ const InputJobs = (props:any) => {
                   }
                   rightmenu={
                     <TouchableOpacity disabled={saveForm} onPress={saveDataFrom}>
-                    <HStack bg={saveForm?'#6c7472':'#009688'}  p={2} pl={3} pr={3} borderRadius={15}>
+                    <HStack bg={saveForm?COLORS.ButtonDisable:COLORS.Button100}  p={2} pl={3} pr={4} borderRadius={15}>
                       <Text color="#fff">SAVE </Text>
                       {/* <Text><MaterialIcons name="check-circle-outline" color='#fff' size={20} /></Text> */}
                       <Text><MaterialIcons name="save-alt" color='#fff' size={18} /></Text>

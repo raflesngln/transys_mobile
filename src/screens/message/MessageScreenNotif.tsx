@@ -1,9 +1,12 @@
 import { View, HStack, Box, Heading, Text, Avatar, Center, Button, VStack, ScrollView,Stack, AspectRatio, Image, Spacer } from 'native-base';
 import React, { useEffect, useState } from "react";
-import { Dimensions, ImageBackground, Pressable, StyleSheet ,TouchableOpacity} from "react-native";
+import { Dimensions,SafeAreaView, ImageBackground, Pressable, StyleSheet ,TouchableOpacity} from "react-native";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { color } from 'native-base/lib/typescript/theme/styled-system';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import COLORS from '@config/colors';
+import { useNavigation } from '@react-navigation/native';
 
 var deviceHeight:any = Dimensions.get('window').height;
 var deviceWidth:any = Dimensions.get('window').width;
@@ -15,6 +18,7 @@ const App = () =>{
   const [itemData, setItemData] = useState<undefined | any>([])
   const [itemDataUsers, setItemDataUsers] = useState<undefined | any>()
   const [products, setProducts] = useState<undefined | any>()
+  const navigation = useNavigation();
 
 
   const getUsers=async ()=>{
@@ -59,92 +63,43 @@ const App = () =>{
 
         <SafeAreaView style={{backgroundColor:'#00bcd44a',zIndex:999,marginTop:"0%",borderTopLeftRadius:20,borderTopRightRadius:20}}>
         <ScrollView showsVerticalScrollIndicator={false} >
-        <HStack justifyContent="space-between" bg="#9cf4ff36" h="130" p={2} borderBottomLeftRadius={2} borderBottomRightRadius={70} zIndex={1}>
-          <Box>
-           <HStack space={3} mb={3}>
-                <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
-                  <MaterialIcons name="build" color='#ffff' size={20} />
+        <HStack justifyContent="flex-start" bg="#9cf4ff36" h="130" p={2} pt={3}  zIndex={1}>
+          <Stack p={2} w="30%">
+              <TouchableOpacity style={{padding:6,borderRadius:100}} activeOpacity={0.2} onPress={() => {navigation.goBack()}}>
+                <Text style={{color:'#fff'}}>
+                    <MaterialCommunityIcons name="arrow-left"  size={25} />
                 </Text>
-                <Text style={{backgroundColor:'#57e5f763',padding:7,borderRadius:10}}>
-                  <MaterialIcons name="comment" color='#ffff' size={20} />
-                </Text>
-           </HStack>
-
-            <Text color="gray.200" mt={2} mb={2}>Welcome,</Text>
-            <Text style={styles.textBig}>Rafles Nainggolan</Text>
-          </Box>
+              </TouchableOpacity>
+          </Stack>
           <Box>
-            <Avatar bg="green.500" source={{
-                uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              }}> AJ
-              </Avatar>
+            <Text style={styles.textBig}>Application Design</Text>
           </Box>
+          
         </HStack>
           
-        <HStack  p={2} pt={5} space={3} justifyContent="space-between">
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-              <Center><MaterialIcons name="360" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Track</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-              <Center><MaterialIcons name="control-point" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>New</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-              <Center><MaterialIcons name="addchart" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Approval</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-              <Center><MaterialIcons name="airplanemode-on" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Jobs</Text></Center>
-          </Box>
-        </HStack>
-        <HStack p={2} pt={3} space={3} justifyContent="space-between">
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-          <TouchableOpacity activeOpacity={0.4} onPress={()=>getDetailShipment()}>
-              <Center><MaterialIcons name="donut-small" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Info</Text></Center>
-          </TouchableOpacity>
-          </Box>
-          <Button opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9} onPress={()=>getDetailShipment()}>
-            <Center><MaterialIcons name="access-time" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Notif</Text></Center>
-          </Button>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-              <Center><MaterialIcons name="equalizer" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Message</Text></Center>
-          </Box>
-          <Box opacity={0.9} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={9}>
-              <Center><MaterialIcons name="contactless" style={styles.iconColor} size={30} /></Center>
-            <Center><Text style={styles.textDefault}>Status</Text></Center>
-          </Box>
-        </HStack>
+     
 
-            <HStack mt={4} pl={3} pr={2} justifyContent="space-between">
-            <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>Courier</Text>
-            <Text color='gray.200'>See All <MaterialIcons name="keyboard-arrow-right" color='#ffff' size={15} /></Text>
-          </HStack>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
-              <HStack p={2} justifyContent="space-between" space={1}>
-                {
-                  Courier && Courier.map((val:any,i:number)=>{
-                    return  <Box key={i}  bg="#9dd8eba8" borderRadius={6} borderWidth={1} borderColor="#cdd0d154" p={2}>
-                    <HStack>
-                    <Avatar bg="green.500" source={{
-                        uri:val.avatar
-                      }} size="sm"> AJ
-                      </Avatar>
-                      <Box pl={2}>
-                      <Text>{val.name}</Text>
-                      <Text>{val.jobs}</Text>
-                      </Box>
-                    </HStack>
-                  </Box>
-
-                  })
-                }
-              </HStack>
-            </ScrollView>
+          <VStack mt={4} p={1} justifyContent="space-between">
+            <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>COLORS</Text>
+            <VStack space={1} minH={200} p={1}>
+                <Box h={45} bg={COLORS.transparant100} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
+                <Box h={45} bg={COLORS.transparant200} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
+                <Box h={45} bg={COLORS.transparant300} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
+                <Box h={45} bg={COLORS.transparant400} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
+                <Box h={45} bg={COLORS.contentBg100} borderRadius={8} p={2}><Text>contentBg100</Text></Box>
+                <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>CONTENT BG</Text>
+                <Box h={45} bg={COLORS.contentBg200} borderRadius={8} p={2}><Text>contentBg200</Text></Box>
+                <Box h={45} bg={COLORS.contentBg300} borderRadius={8} p={2}><Text>contentBg300</Text></Box>
+                <Box h={45} bg={COLORS.contentBg400} borderRadius={8} p={2}><Text>contentBg400</Text></Box>
+                <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text>contentBg500</Text></Box>
+                <Box h={45} bg={COLORS.contentBg600} borderRadius={8} p={2}><Text>contentBg600</Text></Box>
+                <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>LINE COLOR</Text>
+                <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor100,borderBottomWidth:1}}>LineColor100</Text></Box>
+                <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor200,borderBottomWidth:1}}>LineColor200</Text></Box>
+                <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor300,borderBottomWidth:1}}>LineColor200</Text></Box>
+              </VStack>
+          </VStack>
+           
 
           <VStack space={1}>
             <HStack justifyContent="space-between">
@@ -158,7 +113,7 @@ const App = () =>{
                   {
                     backgroundColor: pressed
                       ? '#c6eefbde'
-                      : '#c6eefbbf',
+                      : COLORS.contentBg100,
                       width:'100%',
                       opacity:pressed?0.6:1
                   }
@@ -168,7 +123,7 @@ const App = () =>{
                       <Stack justifyContent="center" alignItems="center"  bg="#c6eefbde" h={45} w={45} borderRadius={9}><Text color='#3d3d3d'><MaterialIcons name="av-timer" size={30} /></Text></Stack>
                     </Stack>
                     <Box w="83%" pl={3}>
-                      <Text fontWeight="500" color="#3d3d3d">JOBS0026372672647</Text>
+                      <Text fontWeight="500" color="#3d3d3d">JOBS123456789</Text>
                       <Text color="gray.600">In warehouse</Text>
                     </Box>
                     <Box w="7%"><Text color='#000'><MaterialIcons name="keyboard-arrow-right" size={20} /></Text></Box>
@@ -178,56 +133,9 @@ const App = () =>{
             }
           </VStack>
 
-        <VStack p={1} pb={3} mt={5} space={2} w="100%" >
-          <HStack justifyContent="space-between">
-            <Text pl="3" color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>Annouchement</Text>
-            <Text color='gray.200'>See All <MaterialIcons name="keyboard-arrow-right" color='#ffff' size={15} /></Text>
-          </HStack>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
-              <HStack p={2} justifyContent="space-between" space={2} >
-                {
-                  itemData && itemData.map((val:any,i:any)=>{
-                    return  <VStack key={i}  bg="#9dd8eba8" w={deviceWidth/3} pt={0} borderRadius={8} borderWidth={1} borderColor="#cdd0d154" >
-                      <Stack w="100%" bg="#000">
-                        <Image source={{
-                              uri: val.avatar
-                            }} alt="image" w="100%" h={110}  />
-                    </Stack>
-                    <HStack>
-                      <Box pl={2}>
-                      <Text>{val.first_name}</Text>
-                      <Text>{val.email}</Text>
-                      </Box>
-                    </HStack>
-                  </VStack>
+          <Spacer mt={30} />
 
-                  })
-                }
-              </HStack>
-            </ScrollView>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} nestedScrollEnabled={true}>
-              <HStack p={2} justifyContent="space-between" space={2} >
-                {
-                  products && products.map((val:any,i:any)=>{
-                    return  <VStack key={i}  bg="#9dd8eba8" w={deviceWidth/3} borderRadius={10} borderWidth={1} borderColor="#cdd0d154" p={2}>
-                      <Stack w="100%" bg="#000">
-                        <Image source={{
-                              uri: val.thumbnail
-                            }} alt="image" w="100%" h={130} />
-                    </Stack>
-                    <HStack>
-                      <Box pl={2}>
-                      <Text>{val.title}</Text>
-                      <Text>{val.price}</Text>
-                      </Box>
-                    </HStack>
-                  </VStack>
-
-                  })
-                }
-              </HStack>
-            </ScrollView>
-        </VStack>
+       
         <Box>
           {/* <Text> DATA2{JSON.stringify(itemData)}</Text> */}
         </Box>

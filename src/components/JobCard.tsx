@@ -4,12 +4,13 @@ import { Pressable, StyleSheet, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
+import COLORS from '@config/colors';
 
 const JobCard = ({ shipment }) => {
   const navigation = useNavigation<any>();
 
   return(
-    <VStack w="100%" alignItems="center" space={2} mb={5} borderRadius={10}>
+    <VStack w="100%" alignItems="center" space={2} mb={5}>
       <Box maxW="100%" w="100%" rounded="lg"   borderColor="coolGray.200" borderWidth="1" _dark={{
             borderColor: "coolGray.600",
             backgroundColor: "gray.700"
@@ -17,7 +18,7 @@ const JobCard = ({ shipment }) => {
             shadow: 9,
             borderWidth: 2
           }} _light={{
-            backgroundColor: "#c6eefbde"
+            backgroundColor:COLORS.contentBg600
           }}
           shadow={5}
           >
@@ -67,9 +68,9 @@ const JobCard = ({ shipment }) => {
             { screen: 'DetailJobs', params: { id: shipment.pid } })}>
           <VStack pr="3" space={3} >
               <Divider orientation="horizontal" w="100%" _light={{
-                bg: "#dcdcde"
+                bg: COLORS.LineColor200
               }} _dark={{
-                bg: "muted.50"
+                bg: COLORS.LineColor200
               }} />
               <HStack justifyContent="space-between">
                 <Text>&nbsp;</Text>
@@ -79,9 +80,9 @@ const JobCard = ({ shipment }) => {
                   <MaterialCommunityIcons name="arrow-right" color='#000' size={22} />
               </HStack>
               <Divider orientation="horizontal" w="100%" _light={{
-                bg: "#dcdcde"
+                bg: COLORS.LineColor200
               }} _dark={{
-                bg: "muted.50"
+                bg: COLORS.LineColor200
               }} />
           </VStack>
           </TouchableOpacity>
