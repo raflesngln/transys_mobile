@@ -71,8 +71,8 @@ const wait = (t:any, v:any) => {
                         <Text style={{color:'#ffff',fontWeight:'600',fontSize:22}}><MaterialCommunityIcons name="chat-processing-outline" color='#bfe0ce' size={20} /> Message's</Text>
                       </Box>
                       <HStack space={2}>
-                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageSearch', params: {title:'Message Search' } })} bg={COLORS.teal200}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="search" color='#ffff' size={20} /></Button></Box>
-                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageNotif', params: {title:'Message Notif' } })} bg={COLORS.teal200}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="notifications-none" color='#ffff' size={20} /></Button></Box>
+                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageSearch', params: {title:'Message Search' } })} bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="search" color='#ffff' size={20} /></Button></Box>
+                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageNotif', params: {title:'Message Notif' } })} bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="notifications-none" color='#ffff' size={20} /></Button></Box>
                         <Box pl="2">
                         <Avatar bg="green.500" alignSelf="center" size="50px" source={{
                               uri: "https://hris.att-group.co.id/assets/images/karyawan/F01A-150885933/tmp/F01A-150885933-26102021134633.jpeg"
@@ -147,8 +147,8 @@ function TabMenu() {
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
       renderTabBar={props => <TabBar {...props} 
-                    indicatorStyle={{ backgroundColor: '#00fff5',height:3,bottom:1,width:'25%',marginLeft:'2%' }}
-                    style={{backgroundColor:'#0b5c8b',borderRadius:10,borderColor:'#3e8eab',borderWidth:1}}
+                    indicatorStyle={{ backgroundColor: COLORS.mint100,height:3,bottom:1,width:'25%',marginLeft:'2%' }}
+                    style={{backgroundColor:COLORS.teal500,borderRadius:10,borderColor:COLORS.teal200,borderWidth:1}}
                     renderLabel={({ route, focused, colora }:any) => (
                           <Text style={{color:colora,margin: 5}}>
                               {route.title}

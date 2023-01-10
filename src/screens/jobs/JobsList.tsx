@@ -119,7 +119,7 @@ const JoblistScreen = (props:any) => {
                       </Box>
                       <HStack space={2}>
                         <Box pl="1">
-                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg={COLORS.success200} borderColor={COLORS.success200} borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
+                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg={COLORS.success400} borderColor={COLORS.success400} borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
                         </Box>
                         <Box>
                             <MenuFilterShipment/>
