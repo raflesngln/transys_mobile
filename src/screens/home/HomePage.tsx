@@ -105,39 +105,39 @@ function HomePage() {
               </HStack>
 
               <HStack p={2} pt={5} space={3} justifyContent="space-between">
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="360" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Track</Text></Center>
+                  <Center><Text color={COLORS.white400} style={styles.textDefault}>Track</Text></Center>
                 </Button>
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="control-point" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>New</Text></Center>
+                  <Center><Text color={COLORS.white400}>New</Text></Center>
                 </Button>
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="addchart" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Approval</Text></Center>
+                  <Center><Text color={COLORS.white400}>Approval</Text></Center>
                 </Button>
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="airplanemode-on" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Jobs</Text></Center>
+                  <Center><Text color={COLORS.white400}>Jobs</Text></Center>
                 </Button>
               </HStack>
               <HStack p={2} pt={3} space={3} justifyContent="space-between">
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7} onPress={() => getDetailShipment()}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12}  onPress={() => getDetailShipment()}>
                   <Center><MaterialIcons name="donut-small" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Info</Text></Center>
+                  <Center><Text color={COLORS.white400}>Info</Text></Center>
                 </Button>
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7} onPress={() => getDetailShipment()}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12}  onPress={() => getDetailShipment()}>
                   <Center><MaterialIcons name="access-time" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Notif</Text></Center>
+                  <Center><Text color={COLORS.white400}>Notif</Text></Center>
                 </Button>
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="equalizer" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Message</Text></Center>
+                  <Center><Text color={COLORS.white400}>Message</Text></Center>
                 </Button>
-                <Button opacity={0.90} w="22%" h={75} p={2} bg="#9dd8eba8" borderRadius={12} shadow={7}>
+                <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="contactless" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text style={styles.textDefault}>Status</Text></Center>
+                  <Center><Text color={COLORS.white400}>Status</Text></Center>
                 </Button>
               </HStack>
 
@@ -154,7 +154,7 @@ function HomePage() {
                           {
                             backgroundColor: pressed
                               ? '#c6eefbde'
-                              : '#c6eefbbf',
+                              : COLORS.contentBg600,
                             width: '20%',
                             opacity: pressed ? 0.4 : 1,
                             borderRadius: 9
@@ -221,7 +221,7 @@ function HomePage() {
                   <HStack p={2} justifyContent="space-between" space={2} >
                     {
                       itemData && itemData.map((val: any, i: any) => {
-                        return <VStack key={i} bg="#9dd8eba8" w={deviceWidth / 3} pt={0} borderRadius={8} borderWidth={1} borderColor="#cdd0d154" >
+                        return <VStack key={i} bg={COLORS.contentBg600} w={deviceWidth / 3} pt={0} borderRadius={8} borderWidth={1} borderColor="#cdd0d154" >
                           <Stack w="100%" >
                             <Image source={{
                               uri: val.avatar
@@ -243,7 +243,7 @@ function HomePage() {
                   <HStack p={2} justifyContent="space-between" space={2} >
                     {
                       products && products.map((val: any, i: any) => {
-                        return <VStack key={i} bg="#9dd8eba8" w={deviceWidth / 3} borderRadius={10} borderWidth={1} borderColor="#cdd0d154" p={2}>
+                        return <VStack key={i} bg={COLORS.contentBg500} w={deviceWidth / 3} borderRadius={10} borderWidth={1} borderColor="#cdd0d154" p={2}>
                           <Stack w="100%" >
                             <Image source={{
                               uri: val.thumbnail
@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
   },
   textDefault: {
     // color:'#11629f',
-    color: '#eaf1f7',
+    // color: '#eaf1f7',
     fontWeight: '600'
   },
   textBig: {
