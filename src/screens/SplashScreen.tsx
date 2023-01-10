@@ -52,7 +52,7 @@ const SplashScreen = ({navigation}:any) => {
             />
         <Box>
           <Heading>
-              <Text mt="5" color="#cffffd" style={{fontSize:30}} >Online Delivery System</Text>
+              <Text mt="5" color="#cffffd" style={{fontSize:30}} >ATT Logistics Mobile</Text>
           </Heading>
         </Box>
         <Box style={styles.box_circle}>

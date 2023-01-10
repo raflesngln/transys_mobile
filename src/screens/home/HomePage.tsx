@@ -107,18 +107,18 @@ function HomePage() {
               <HStack p={2} pt={5} space={3} justifyContent="space-between">
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="360" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text color={COLORS.white400} style={styles.textDefault}>Track</Text></Center>
+                  <Center><Text color={COLORS.white400} style={styles.textDefault}>Tracking</Text></Center>
                 </Button>
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
                   <Center><MaterialIcons name="control-point" style={styles.iconColor} size={30} /></Center>
-                  <Center><Text color={COLORS.white400}>New</Text></Center>
+                  <Center><Text color={COLORS.white400}>New Jobs</Text></Center>
                 </Button>
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
-                  <Center><MaterialIcons name="addchart" style={styles.iconColor} size={30} /></Center>
+                  <Center><MaterialIcons name="approval" style={styles.iconColor} size={30} /></Center>
                   <Center><Text color={COLORS.white400}>Approval</Text></Center>
                 </Button>
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
-                  <Center><MaterialIcons name="airplanemode-on" style={styles.iconColor} size={30} /></Center>
+                  <Center><MaterialIcons name="addchart" style={styles.iconColor} size={30} /></Center>
                   <Center><Text color={COLORS.white400}>Jobs</Text></Center>
                 </Button>
               </HStack>
@@ -128,11 +128,11 @@ function HomePage() {
                   <Center><Text color={COLORS.white400}>Info</Text></Center>
                 </Button>
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12}  onPress={() => getDetailShipment()}>
-                  <Center><MaterialIcons name="access-time" style={styles.iconColor} size={30} /></Center>
+                  <Center><MaterialIcons name="notifications-active" style={styles.iconColor} size={30} /></Center>
                   <Center><Text color={COLORS.white400}>Notif</Text></Center>
                 </Button>
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >
-                  <Center><MaterialIcons name="equalizer" style={styles.iconColor} size={30} /></Center>
+                  <Center><MaterialIcons name="message" style={styles.iconColor} size={30} /></Center>
                   <Center><Text color={COLORS.white400}>Message</Text></Center>
                 </Button>
                 <Button opacity={0.90} w="22%" h={75} p={2} bg={COLORS.mint200} borderColor={COLORS.mint200} borderWidth="1" borderRadius={12} >

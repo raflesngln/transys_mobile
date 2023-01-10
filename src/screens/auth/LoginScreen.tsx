@@ -151,7 +151,7 @@ function Content(props:any){
 
                   </VStack>
                   <Center w="100%" mt="-9%">
-                    <Text pt="3" style={{fontSize:24,color:'#000',fontWeight:'bold'}}>ATT Courier Mobile</Text>
+                    <Text pt="3" style={{fontSize:24,color:'#000',fontWeight:'bold'}}>ATT Logistics Mobile</Text>
                   </Center>
                   {/* <Box style={styles.box_circle}>
                   </Box> */}
@@ -194,7 +194,7 @@ function Content(props:any){
                       <Box mt="5">
                             <Button rounded="50"  h="50px" bg={COLORS.mint300}  borderColor={COLORS.teal100} borderWidth={2} onPress={GoLogin}> 
                               <HStack space={2} >
-                                <Text color={COLORS.black300} fontWeight="700"> LOGIN</Text>
+                                <Text color={COLORS.black300} fontWeight="700"> LOGIN NOW</Text>
                                 <MaterialCommunityIcons name="chevron-right" style={{color:COLORS.black300}} size={22} />
                               </HStack>
                             </Button>
