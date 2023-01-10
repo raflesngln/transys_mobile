@@ -47,6 +47,7 @@ import { useQuery,useMutation } from '@tanstack/react-query';
 import { fetchJobListKEY } from '@services/variableKEY';
 import IndicatorLoading from '@components/indicatorLoading';
 import Progressing from '@components/Progressing';
+import LayoutBackground from '@components/LayoutBackground';
 
 const wait = (t:any, v:any) => {
   // return new Promise(resolve => setTimeout(resolve, timeout));
@@ -63,9 +64,9 @@ const InputJobs = (props:any) => {
   // const { title } = route.params;
 
   return (
-    <View style={{ flex: 1 }}>
+    <LayoutBackground>
       <Content/>
-    </View>
+    </LayoutBackground>
   );
 };
 
@@ -109,7 +110,7 @@ const InputJobs = (props:any) => {
         return (
           <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
-            <Header bottomRadius="25"
+            <Header bg={COLORS.transparant100}
                   midmenu={
                     <Box w="70%">
                       <Center>
@@ -119,7 +120,7 @@ const InputJobs = (props:any) => {
                   }
                   rightmenu={
                     <TouchableOpacity disabled={saveForm} onPress={saveDataFrom}>
-                    <HStack bg={saveForm?COLORS.ButtonDisable:COLORS.Button100}  p={2} pl={3} pr={4} borderRadius={15}>
+                    <HStack bg={saveForm?COLORS.ButtonDisable:COLORS.mint200}  p={3} borderRadius={18}>
                       <Text color="#fff">SAVE </Text>
                       {/* <Text><MaterialIcons name="check-circle-outline" color='#fff' size={20} /></Text> */}
                       <Text><MaterialIcons name="save-alt" color='#fff' size={18} /></Text>
@@ -129,8 +130,8 @@ const InputJobs = (props:any) => {
                 />
 
               {/* <Flex w='100%' justifyContent="space-between" minH="98%"> */}
-              <Flex w='100%' bg="#ffff">
-                <ScrollView contentContainerStyle={{ flexGrow: 1 }} mt="-5%" p="2" pt="-5" pb="30" maxH="95%" minH="95%">
+              <Flex w='100%' bg="#ffff" pt="-5%">
+                <ScrollView contentContainerStyle={{ flexGrow: 1 }}  p="2" pt="-5" pb="30" maxH="95%" minH="95%">
                   <VStack w="100%">
                     <Box>
                       <Inputan save_data_complete={(e:any)=>saveDataFromComplete(e)} is_save_data={saveForm}/>

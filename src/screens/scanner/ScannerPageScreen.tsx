@@ -29,6 +29,7 @@ import Header from '@components/Header'
 import { HomeScreenNavigation } from '@navigation/types';
 import COLORS from '@config/colors';
 import CardSkeleton from 'components/CardSkeleton';
+import LayoutBackground from '@components/LayoutBackground';
 
 var deviceHeight:any = Dimensions.get('window').height.toFixed();
 const scrollOffset = new Animated.Value(0);
@@ -60,19 +61,16 @@ const DetailProduct = ({ route, navigation }:any) => {
 
 
   return (
+    <LayoutBackground>
     <View style={{ flex: 1 }}>
       <NativeBaseProvider>
         <SafeAreaView style={styles.container}>
-        <Header bg="#185cba" isBack={false}
+        <Header bg={COLORS.transparant100} isBack={false}
             rightmenu={
               <Box>
                 <HStack space={3}>
-                <TouchableOpacity activeOpacity={0.2} onPress={()=>SearchData()}>
-                  <MaterialCommunityIcons name="file-image" color="#ffff" size={30} />
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.2} onPress={()=>SearchData()}>
-                  <MaterialCommunityIcons name="car-light-high" color="#ffff" size={30} />
-                </TouchableOpacity>
+                <Box pl="1"><Button bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialCommunityIcons name="file-image" color='#ffff' size={20} /></Button></Box>
+                <Box pl="1"><Button bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialCommunityIcons name="car-light-high" color='#ffff' size={20} /></Button></Box>
                 </ HStack>
               </Box>
             }
@@ -80,10 +78,10 @@ const DetailProduct = ({ route, navigation }:any) => {
           <VStack w="94%" ml="3%" justifyContent="center">
             <Box pl="35%" mt="12%">
               <Heading>
-                <Text style={{color:COLORS.primaryText}}>BARCODE</Text>
+                <Text style={{color:COLORS.white200}}>BARCODE</Text>
               </Heading>
             </Box>
-            <Box bg="#000" h={deviceHeight/1.8} borderRadius="10" mt="12%">
+            <Box bg={COLORS.black400} h={deviceHeight/1.8} borderRadius="10" mt="12%">
               <Text style={{color:'#4d85ff'}}>.</Text>
             </Box>
             {/* <VStack mt={9}>
@@ -94,6 +92,7 @@ const DetailProduct = ({ route, navigation }:any) => {
             </SafeAreaView>
           </NativeBaseProvider>
     </View>
+    </LayoutBackground>
   );
 };
     

@@ -82,7 +82,7 @@ const ProfileScreen = (props:any) => {
         return (
           <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
-            <ScrollView >
+            <ScrollView showsVerticalScrollIndicator={false} >
                   <HStack style={styles.headerBoxSettings} bg="#00bcd44a" space={2} pl={1}  justifyContent="center" justifyItems="center" >
                     <Box pl={4} h="95px" w="90px" rounded="full" shadow={3}>
                       <Avatar bg="#00bcd44a" alignSelf="center" size="xl" source={{
