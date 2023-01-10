@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   RefreshControl,
   PermissionsAndroid,
+  PixelRatio,
   Platform
 } from 'react-native';
 import { AspectRatio,Text, Pressable, Image, Box,IconButton,Icon, Container, Heading, Center, NativeBaseProvider, VStack, ZStack, HStack, Flex, Spacer, Stack, ScrollView, Divider, FlatList, SectionList, Avatar, Badge, Button, Card, FormControl, Input, useDisclose, Actionsheet, Select, CheckIcon, TextArea, useToast } from 'native-base';
@@ -330,6 +331,12 @@ const completeSaveData = () => {
   props.save_data_complete(false);
 };
 
+const deleteImageCrop=(i:any)=>{
+  let filterImage=cameracrop.filter((_:any,index:any)=>index!=i)
+  console.log('delete index '+filterImage)  
+  setCameraCrop(filterImage)
+}
+
 useEffect(() => {
   if (isPostLoading){
     setPostResult("Loading Save Data...");
@@ -412,7 +419,8 @@ useEffect(() => {
                       {
                         cameracrop?
                         cameracrop.map((val:any,i:any)=>{
-                          return <Image key={i} source={{uri: val}} alt="my files" h="90" w="90" borderColor="#000" borderWidth={1} m="2" borderRadius={4} />
+                          return <HStack key={i} ><Image source={{uri: val}} alt="my files" h="90" w="90" borderColor="#000" borderWidth={1} m="2" borderRadius={4} />
+                          <TouchableOpacity onPress={()=>deleteImageCrop(i)}><Text h={28 / PixelRatio.getFontScale()} w={28 / PixelRatio.getFontScale()} ml="-6" p="1" bg={COLORS.danger500} borderRadius={40}><MaterialIcons name="close" color='#fff' size={20} /></Text></TouchableOpacity></HStack>
                         })
                         :''
                       }
