@@ -147,11 +147,11 @@ function TabMenu() {
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
       renderTabBar={props => <TabBar {...props} 
-                    indicatorStyle={{ backgroundColor: COLORS.mint100,height:3,bottom:1,width:'25%',marginLeft:'2%' }}
-                    style={{backgroundColor:COLORS.teal500,borderRadius:10,borderColor:COLORS.teal200,borderWidth:1}}
+                    indicatorStyle={{ backgroundColor: COLORS.mint500,height:3,bottom:1,width:'25%',marginLeft:'2%' }}
+                    style={{backgroundColor:COLORS.teal600,borderRadius:10,borderColor:COLORS.mint300,borderWidth:1}}
                     renderLabel={({ route, focused, colora }:any) => (
                           <Text style={{color:colora,margin: 5}}>
-                              {route.title}
+                              {route.title}{colora}
                           </Text>
                       )}
                     />
