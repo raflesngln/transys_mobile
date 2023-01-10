@@ -333,7 +333,6 @@ const completeSaveData = () => {
 
 const deleteImageCrop=(i:any)=>{
   let filterImage=cameracrop.filter((_:any,index:any)=>index!=i)
-  console.log('delete index '+filterImage)  
   setCameraCrop(filterImage)
 }
 

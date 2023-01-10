@@ -28,21 +28,26 @@ import { setDataLogin, logout } from '@redux/apps/LoginSlice'
 // import HomeScreenNavigation that check fro routes in homescreen
 import { RootNavigation } from '@navigation/types';
 import { AuthNavigation } from '@navigation/types';
+import COLORS from '@config/colors';
+import LayoutBackground from '@components/LayoutBackground';
 // Get device height and width
 var deviceHeight:any = Dimensions.get('window').height.toFixed();
 var deviceWidth:any = Dimensions.get('window').width;
 
 const LoginScreen = (props:any) => {
   return (
-    <View style={{ flex: 1 }}>
+    // <View style={{ flex: 1 }}>
+    <LayoutBackground>
       <Content/>
-    </View>
+    </LayoutBackground>
   );
 };
 
 function Content(props:any){
   const [show, setShow] = React.useState(false);
   const toast = useToast();
+  const [colorSearch, setColorSearch] = React.useState('#000');
+  const [bgSearch, setBgSearch] = React.useState('#fff');
   const RootnavigationProp = useNavigation<RootNavigation>(); // check which routes is navigates
   const AuthNavigationProp = useNavigation<AuthNavigation>(); // check which routes is navigates
   
@@ -109,6 +114,12 @@ function Content(props:any){
 
     }
 
+
+  const ChangeColorTextSearch=(textColor:any,bgColor:any)=>{
+    setColorSearch(textColor)
+    setBgSearch(bgColor)
+  }
+
     useEffect(()=>{
           console.log('State login Berubah')
     },[animating])
@@ -124,8 +135,8 @@ function Content(props:any){
               <VStack space={2}  w='100%'>
                 <LinearGradient
                   // colors={['#030e28','#2d3a85','#030e28' ]}
-                  // colors={['#4594ff52','#4594ff52','#4594ff52' ]}
-                  colors={['#0960d9','#0960d9','#0960d9' ]}
+                  colors={['#fff','#fff','#fff' ]}
+                  // colors={[COLORS.teal600,COLORS.mint100,COLORS.mint100 ]}
                   style={styles.headerBox}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 1 }}
@@ -140,10 +151,10 @@ function Content(props:any){
 
                   </VStack>
                   <Center w="100%" mt="-9%">
-                    <Text pt="3" style={{fontSize:24,color:'#ffffff',fontWeight:'bold'}}>Online Delivery System</Text>
+                    <Text pt="3" style={{fontSize:24,color:'#000',fontWeight:'bold'}}>ATT Courier Mobile</Text>
                   </Center>
-                  <Box style={styles.box_circle}>
-                  </Box>
+                  {/* <Box style={styles.box_circle}>
+                  </Box> */}
                   <Box style={styles.box_circle2}>
                   </Box>
                   <Box style={styles.box_circle3}>
@@ -162,26 +173,29 @@ function Content(props:any){
 
                     </HStack>
                     {
-                      message?<Text style={{color:'#ffd4d4f7',padding:6,borderRadius:10}}>Your Username & Password not Match !</Text>:''
+                      message?<Text style={{color:COLORS.danger500,padding:6,borderRadius:10}}>Your Username & Password not Match !</Text>:''
                     }
                     
                 </Center>
                     <Box p="3" w="100%">
                       <FormControl isInvalid w="100%" maxW="100%" isRequired>
-                        <Input style={styles.inputText} h="50px" variant="rounded" w={{base: "100%",md: "100%"}} InputLeftElement={<Icon as={<MaterialIcons name="how-to-reg" />} size={5} ml="2" color="muted.400" />} placeholder="Enter Email / Username"
+                      <VStack space={2}>
+                        <Input bg={bgSearch} style={{color:colorSearch,fontSize:15}} h="50px" variant="rounded" w={{base: "100%",md: "100%"}} InputLeftElement={<Icon as={<MaterialIcons name="how-to-reg" />} size={5} ml="2" color="muted.400" />} placeholder="Enter Email / Username"
                         value={stateLogin.username} onChangeText={(ev)=>stateChange('username',ev)} />
-
-                        <Input style={styles.inputText} h="50px" mt="3" variant="rounded" w={{base: "100%",md: "100%"}} type={show ? "text" : "password"} InputLeftElement={<Icon as={<MaterialIcons name="lock-outline" />} size={5} ml="2" color="muted.400" />} InputRightElement={<Pressable onPress={() => setShow(!show)}>
+                        <Input bg={bgSearch} style={{color:colorSearch,fontSize:15}} h="50px" mt="3" variant="rounded" w={{base: "100%",md: "100%"}} type={show ? "text" : "password"} InputLeftElement={<Icon as={<MaterialIcons name="lock-outline" />} size={5} ml="2" color="muted.400" />} InputRightElement={<Pressable onPress={() => setShow(!show)}
+                        onFocus={ () => ChangeColorTextSearch('#1644db','#ffff') }
+                        onBlur={ () => ChangeColorTextSearch('#000','#fff') }>
                           <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
                         </Pressable>} placeholder="Password" onChangeText={(ev)=>stateChange('password',ev)} value={stateLogin.password}/>
+                          </VStack>
 
                         {/* <FormControl.Label>   Password</FormControl.Label> */}
                       
                       <Box mt="5">
-                            <Button rounded="50"  h="50px" bg="#9dc7ff52" shadow={9} borderColor="#9dc7ff52" borderWidth={2} onPress={GoLogin}> 
+                            <Button rounded="50"  h="50px" bg={COLORS.mint300}  borderColor={COLORS.teal100} borderWidth={2} onPress={GoLogin}> 
                               <HStack space={2} >
-                                <Text style={{color:"#ffff"}}>SUBMIT LOGIN</Text>
-                                <MaterialCommunityIcons name="chevron-right" style={{color:"#ffff"}} size={22} />
+                                <Text color={COLORS.black300} fontWeight="700"> LOGIN</Text>
+                                <MaterialCommunityIcons name="chevron-right" style={{color:COLORS.black300}} size={22} />
                               </HStack>
                             </Button>
                       </Box>
@@ -226,8 +240,8 @@ function Content(props:any){
     const styles = StyleSheet.create({
       container: {
         flex: 1,
-        // backgroundColor:'#ffff',
-        backgroundColor:'#0960d9'
+        backgroundColor:COLORS.transparant500,
+        // backgroundColor:'#0960d9'
       },
       scrollView: {
         flex: 1,
@@ -305,7 +319,7 @@ function Content(props:any){
       box_circle3: {
         height:200,width:200,
         // backgroundColor:'#b2d3ff38',
-        backgroundColor:'#4594ff52',
+        backgroundColor:COLORS.transparant300,
         position:'absolute',
         borderRadius:200,
         top:(deviceHeight/2)-(deviceHeight/9),
@@ -313,20 +327,19 @@ function Content(props:any){
         zIndex:99
       },
       box_circle4: {
-        height:200,width:200,
+        height:180,width:180,
         // backgroundColor:'#b2d3ff38',
-        backgroundColor:'#4594ff52',
+        backgroundColor:COLORS.mint100,
         position:'absolute',
         borderRadius:200,
-        // top:'250%',
         top:(deviceHeight/2)+(deviceHeight/3)+10,
-        bottom:'0%',
+        bottom:'10%',
         left:'-30%',
         zIndex:99
       },
       inputText:{
         color:'#dfecff',
-        fontSize:16
+        fontSize:16,
       }
     });
 
