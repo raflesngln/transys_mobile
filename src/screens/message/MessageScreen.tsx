@@ -66,13 +66,13 @@ const wait = (t:any, v:any) => {
           <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
             <VStack space={2}  w='100%'>
-                    <HStack  style={styles.headerBox} bg="#00bcd44a" p="2" pt="3" display="flex" flexDirection="row" justifyContent="space-between">
+                    <HStack  style={styles.headerBox} bg={COLORS.transparant300} p="2" pt="3" display="flex" flexDirection="row" justifyContent="space-between">
                         <Box mt="2">
                         <Text style={{color:'#ffff',fontWeight:'600',fontSize:22}}><MaterialCommunityIcons name="chat-processing-outline" color='#bfe0ce' size={20} /> Message's</Text>
                       </Box>
                       <HStack space={2}>
-                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageSearch', params: {title:'Message Search' } })} bg="#545b83"  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="search" color='#ffff' size={20} /></Button></Box>
-                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageNotif', params: {title:'Message Notif' } })} bg="#545b83"  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="notifications-none" color='#ffff' size={20} /></Button></Box>
+                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageSearch', params: {title:'Message Search' } })} bg={COLORS.teal200}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="search" color='#ffff' size={20} /></Button></Box>
+                        <Box pl="1"><Button onPress={() => navigation.navigate('MessageStack' as never,{ screen: 'MessageNotif', params: {title:'Message Notif' } })} bg={COLORS.teal200}  h="42" w="42" variant="subtle" size="sm" rounded='full'><MaterialIcons name="notifications-none" color='#ffff' size={20} /></Button></Box>
                         <Box pl="2">
                         <Avatar bg="green.500" alignSelf="center" size="50px" source={{
                               uri: "https://hris.att-group.co.id/assets/images/karyawan/F01A-150885933/tmp/F01A-150885933-26102021134633.jpeg"
@@ -92,7 +92,7 @@ const wait = (t:any, v:any) => {
     };
 
 const FirstRoute = () => (
-    <VStack style={{flex:1}} mt={5} p="2" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" >
+    <VStack style={{flex:1}} mt={2} p="1" roundedTopRight="22" roundedTopLeft="22" roundedBottomRight="8" roundedBottomLeft="8" >
       <Box h="80%" w="100%" mb="50">
         <DogListsItems />
       </Box>
@@ -101,7 +101,7 @@ const FirstRoute = () => (
     </VStack>
 );
 const SecondRoute = () => (
-    <VStack   style={{flex:1}} p="2" pt="2">
+    <VStack   style={{flex:1}} p="1" pt="2">
     <Box h="80%" w="100%" mb="50">
       <PokemonData />
     </Box>
@@ -110,7 +110,7 @@ const SecondRoute = () => (
   </VStack>
 );
 const ThirdRoute = () => (
-    <VStack   style={{flex:1}} p="2" pt="2">
+    <VStack   style={{flex:1}} p="1" pt="2">
     <Box h="80%" w="100%" mb="50">
       <GetDogsInfinity />
     </Box>

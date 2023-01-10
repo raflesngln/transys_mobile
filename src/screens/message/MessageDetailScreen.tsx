@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 import COLORS from '@config/colors';
 import { useNavigation } from '@react-navigation/native';
+import LayoutBackground from '@components/LayoutBackground';
 
 var deviceHeight:any = Dimensions.get('window').height;
 var deviceWidth:any = Dimensions.get('window').width;
@@ -57,14 +58,15 @@ const App = () =>{
 
   return(
   <View style={styles.container}>
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+    <LayoutBackground>
         
       <View style={[styles.maincontainer]}>
 
-        <SafeAreaView style={{backgroundColor:'#00bcd44a',zIndex:999,marginTop:"0%",borderTopLeftRadius:20,borderTopRightRadius:20}}>
+        <SafeAreaView style={{zIndex:999,marginTop:"0%",borderTopLeftRadius:20,borderTopRightRadius:20}}>
         <ScrollView showsVerticalScrollIndicator={false} >
-        <HStack justifyContent="flex-start" bg="#9cf4ff36" h="130" p={2} pt={3}  zIndex={1}>
-          <Stack p={2} w="30%">
+        {/* <HStack justifyContent="flex-start" bg="#9cf4ff36" h="130" p={2} pt={3}  zIndex={1}> */}
+        <HStack justifyContent="flex-start" bg={COLORS.transparant300} h="130" p={2} pt={3}  zIndex={1}>
+          <Stack p={2} w="30%"> 
               <TouchableOpacity style={{padding:6,borderRadius:100}} activeOpacity={0.2} onPress={() => {navigation.goBack()}}>
                 <Text style={{color:'#fff'}}>
                     <MaterialCommunityIcons name="arrow-left"  size={25} />
@@ -82,12 +84,13 @@ const App = () =>{
           <VStack mt={4} p={1} justifyContent="space-between">
             <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>COLORS</Text>
             <VStack space={1} minH={200} p={1}>
-                <Box h={45} bg={COLORS.transparant100} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.transparant200} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.transparant300} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.transparant400} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.contentBg100} borderRadius={8} p={2}><Text>contentBg100</Text></Box>
+                <Box h={45} bg={COLORS.transparant100} borderRadius={8} p={2}><Text>transparant100</Text></Box>
+                <Box h={45} bg={COLORS.transparant200} borderRadius={8} p={2}><Text>transparant200</Text></Box>
+                <Box h={45} bg={COLORS.transparant300} borderRadius={8} p={2}><Text>transparant300</Text></Box>
+                <Box h={45} bg={COLORS.transparant400} borderRadius={8} p={2}><Text>transparant400</Text></Box>
+                <Box h={45} bg={COLORS.transparant500} borderRadius={8} p={2}><Text>transparant500</Text></Box>
                 <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>CONTENT BG</Text>
+                <Box h={45} bg={COLORS.contentBg100} borderRadius={8} p={2}><Text>contentBg100</Text></Box>
                 <Box h={45} bg={COLORS.contentBg200} borderRadius={8} p={2}><Text>contentBg200</Text></Box>
                 <Box h={45} bg={COLORS.contentBg300} borderRadius={8} p={2}><Text>contentBg300</Text></Box>
                 <Box h={45} bg={COLORS.contentBg400} borderRadius={8} p={2}><Text>contentBg400</Text></Box>
@@ -142,7 +145,7 @@ const App = () =>{
       </ScrollView>
       </SafeAreaView>
       </View>
-    </ImageBackground>
+    </LayoutBackground>
   </View>
   );
 }

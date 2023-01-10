@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 import COLORS from '@config/colors';
 import { useNavigation } from '@react-navigation/native';
+import LayoutBackground from '@components/LayoutBackground';
 
 var deviceHeight:any = Dimensions.get('window').height;
 var deviceWidth:any = Dimensions.get('window').width;
@@ -57,13 +58,13 @@ const App = () =>{
 
   return(
   <View style={styles.container}>
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+    <LayoutBackground>
         
       <View style={[styles.maincontainer]}>
 
         <SafeAreaView style={{backgroundColor:'#00bcd44a',zIndex:999,marginTop:"0%",borderTopLeftRadius:20,borderTopRightRadius:20}}>
         <ScrollView showsVerticalScrollIndicator={false} >
-        <HStack justifyContent="flex-start" bg="#9cf4ff36" h="130" p={2} pt={3}  zIndex={1}>
+        <HStack justifyContent="flex-start" bg="#9cf4ff36" h="66" p={2} pt={3}  zIndex={1}>
           <Stack p={2} w="30%">
               <TouchableOpacity style={{padding:6,borderRadius:100}} activeOpacity={0.2} onPress={() => {navigation.goBack()}}>
                 <Text style={{color:'#fff'}}>
@@ -72,7 +73,7 @@ const App = () =>{
               </TouchableOpacity>
           </Stack>
           <Box>
-            <Text style={styles.textBig}>Application Design</Text>
+            <Text style={styles.textBig}>Design & Color Pallete</Text>
           </Box>
           
         </HStack>
@@ -82,18 +83,50 @@ const App = () =>{
           <VStack mt={4} p={1} justifyContent="space-between">
             <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>COLORS</Text>
             <VStack space={1} minH={200} p={1}>
-                <Box h={45} bg={COLORS.transparant100} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.transparant200} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.transparant300} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
-                <Box h={45} bg={COLORS.transparant400} borderRadius={8} p={2}><Text>Transparant100</Text></Box>
+                <Box h={45} bg={COLORS.transparant100} borderRadius={8} p={2}><Text>transparant100</Text></Box>
+                <Box h={45} bg={COLORS.transparant200} borderRadius={8} p={2}><Text>transparant200</Text></Box>
+                <Box h={45} bg={COLORS.transparant300} borderRadius={8} p={2}><Text>transparant300</Text></Box>
+                <Box h={45} bg={COLORS.transparant400} borderRadius={8} p={2}><Text>transparant400</Text></Box>
+                <Box h={45} bg={COLORS.transparant500} borderRadius={8} p={2}><Text>transparant500</Text></Box>
+                
+                <Text mt={4} color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>CONTENT BG</Text>
                 <Box h={45} bg={COLORS.contentBg100} borderRadius={8} p={2}><Text>contentBg100</Text></Box>
-                <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>CONTENT BG</Text>
                 <Box h={45} bg={COLORS.contentBg200} borderRadius={8} p={2}><Text>contentBg200</Text></Box>
                 <Box h={45} bg={COLORS.contentBg300} borderRadius={8} p={2}><Text>contentBg300</Text></Box>
                 <Box h={45} bg={COLORS.contentBg400} borderRadius={8} p={2}><Text>contentBg400</Text></Box>
                 <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text>contentBg500</Text></Box>
                 <Box h={45} bg={COLORS.contentBg600} borderRadius={8} p={2}><Text>contentBg600</Text></Box>
-                <Text color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>LINE COLOR</Text>
+
+                <Text mt={4} color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>BUTTON BG</Text>
+                <HStack space={3} flexWrap="wrap">
+                  <Button mb="3" borderRadius={6} bg={COLORS.success100}>success100</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.success200}>success200</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.success300}>success300</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.success400}>success400</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.success500}>success500</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.success600}>success600</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.success700}>success700</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal100}>teal100</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal200}>teal200</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal300}>teal300</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal400}>teal400</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal500}>teal500</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal500}>Button1000</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.warning100}>warning100</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.warning200}>warning200</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.warning300}>warning300</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.warning400}>warning400</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.warning500}>warning500</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.danger100}>danger100</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.danger200}>danger200</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.danger300}>danger300</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.danger400}>danger400</Button>
+                  <Button mb="3" borderRadius={6} bg={COLORS.danger500}>danger500</Button>
+                  <Button mb="3" disabled borderRadius={6} bg={COLORS.ButtonDisable}>ButtonDisable</Button>
+                </HStack>
+
+
+                <Text mt={4} color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>LINE COLOR</Text>
                 <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor100,borderBottomWidth:1}}>LineColor100</Text></Box>
                 <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor200,borderBottomWidth:1}}>LineColor200</Text></Box>
                 <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor300,borderBottomWidth:1}}>LineColor200</Text></Box>
@@ -120,7 +153,7 @@ const App = () =>{
                 ]}>
                   <HStack   pl="3" pb={3} pt={3} justifyContent="space-between" borderBottomColor="gray.200" borderBottomWidth={0}>
                     <Stack w="10%" borderRadius={6}  justifyContent="center" alignItems="center">
-                      <Stack justifyContent="center" alignItems="center"  bg="#c6eefbde" h={45} w={45} borderRadius={9}><Text color='#3d3d3d'><MaterialIcons name="av-timer" size={30} /></Text></Stack>
+                      <Stack justifyContent="center" alignItems="center"  bg={COLORS.contentBg100} h={45} w={45} borderRadius={9}><Text color="gray.600"><MaterialIcons name="av-timer" size={30} /></Text></Stack>
                     </Stack>
                     <Box w="83%" pl={3}>
                       <Text fontWeight="500" color="#3d3d3d">JOBS123456789</Text>
@@ -136,13 +169,11 @@ const App = () =>{
           <Spacer mt={30} />
 
        
-        <Box>
-          {/* <Text> DATA2{JSON.stringify(itemData)}</Text> */}
-        </Box>
+        
       </ScrollView>
       </SafeAreaView>
       </View>
-    </ImageBackground>
+    </LayoutBackground>
   </View>
   );
 }

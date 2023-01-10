@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
+import COLORS from '@config/colors';
 
 const DogCard = ({ ListItems }) => {
   const navigation = useNavigation<any>();
@@ -17,7 +18,8 @@ const DogCard = ({ ListItems }) => {
             shadow: 9,
             borderWidth: 2
           }} _light={{
-            backgroundColor: "#c6eefbde"
+            // backgroundColor: "#c6eefbde"
+            backgroundColor:COLORS.contentBg600
           }}>
         
         <Stack p="4" space={3}>

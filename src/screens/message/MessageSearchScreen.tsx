@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 // import LoadinAnimation from '@components/LoadingAnimation';
 import IndicatorLoading from '@components/indicatorLoading';
 import ProgressingIndicator from '@components/Progressing'
+import LayoutBackground from '@components/LayoutBackground';
 
 var deviceHeight:any = Dimensions.get('window').height.toFixed();
 var deviceWidth:any = Dimensions.get('window').width;
@@ -62,9 +63,9 @@ const AnimatedTopHeaderColors=AnimateHeaderValue.interpolate({
 const LoadingProgress=()=>{
   const { width } = useWindowDimensions();
   return(
-    <Box style={{position:'absolute',top:'40%',left:'45%',margin:'auto',zIndex:999}}>
+    <LayoutBackground>
       <Myanimations2/>
-    </Box>
+    </LayoutBackground>
   )
 }
 

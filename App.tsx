@@ -8,14 +8,13 @@
  * @format
  */
 
-import { Box, VStack } from 'native-base';
-import React, {type PropsWithChildren} from 'react';
+import { Box, Button,Text, Alert,Center, Slide, useColorModeValue, VStack } from 'native-base';
+import React, {useEffect, type PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
@@ -34,8 +33,33 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import {persistor, store } from './src/redux/store'
+import {requestUserPermission,GetTokenFIrebase,NotificationListener} from '@config/Pushnnotification_helper'
+import {useState} from 'react';
+import COLORS from '@config/colors';
+
 
 const App = () => {
+
+  const[notifications,setNotifications]=useState<boolean>(false)
+
+  useEffect(()=>{
+    requestUserPermission()
+    GetTokenFIrebase()
+    // NotificationListener()
+    function getNotifInformationClick(){
+      const pesan:any= NotificationListener()[0].title;
+      if(pesan.length > 2){
+        setNotifications(true)
+      }
+      setTimeout(()=>{
+        setNotifications(false)
+      },2000)
+    }
+    getNotifInformationClick()
+
+  },[])
+
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -58,9 +82,46 @@ const App = () => {
           {/* </NativeBaseProvider> */}
         </PersistGate>
         {/* </QueryClientProvider> */}
+        {/* <Notifikasi status={notifications} title="informasi pesan"/> */}
     </Provider>
     </>
   );
+};
+
+
+
+const Notifikasi = (props:any) => {
+  const [isOpenTop, setIsOpenTop] = React.useState(false);
+  const str = `${isOpenTop ? "Hide" : "Check Internet Connection"}`;
+
+
+  useEffect(()=>{
+    if(props.status==true){
+      setIsOpenTop(true)
+      setTimeout(()=>{
+        setIsOpenTop(false)
+      },2000)
+    }
+
+  },[])
+
+
+
+  return <Center h="20">
+      <Slide in={isOpenTop} placement="top">
+        <Alert justifyContent="center" status="error" safeAreaTop={8}>
+          <Alert.Icon />
+          <Text color="error.600" fontWeight="medium">
+            {props.title}
+          </Text>
+        </Alert>
+      </Slide>
+      <Button onPress={() => setIsOpenTop(!isOpenTop)} variant="unstyled" bg={COLORS.contentBg100} _text={{
+      color: useColorModeValue("darkText", "lightText")
+    }}>
+        {str}
+      </Button>
+    </Center>;
 };
 
 const styles = StyleSheet.create({

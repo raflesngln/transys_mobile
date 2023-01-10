@@ -119,7 +119,7 @@ const JoblistScreen = (props:any) => {
                       </Box>
                       <HStack space={2}>
                         <Box pl="1">
-                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg={COLORS.Button100} borderColor={COLORS.Button200} borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
+                            <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg={COLORS.success200} borderColor={COLORS.success200} borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color='#ffff' size={18} /></Button>
                         </Box>
                         <Box>
                             <MenuFilterShipment/>
@@ -289,7 +289,7 @@ function MenuActionSearchShipment():JSX.Element {
   },[])
   
   return <Box >
-    <Button  onPress={()=>{onOpen();setTextSearch('')}} bg="#8fe4ff9e"  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="search" color='#0b739b' size={18} /></Button>
+    <Button  onPress={()=>{onOpen();setTextSearch('')}} bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="search" color='#fff' size={18} /></Button>
     <LayoutBackground>
       <Actionsheet isOpen={isOpen} onClose={onClose} size="full" justifyContent="flex-start" bg="coolGray.600" pt="10%" top={0}   >
         <VStack w="100%" bg="#ffff" h="100%" space={5}>
@@ -413,7 +413,7 @@ function MenuFilterShipment(props:any):JSX.Element {
   }
 
   return <Center >
-    <Button onPress={onOpen} bg="#8fe4ff9e"  h="42" w="42" variant="subtle" size="sm" rounded="full"><MaterialIcons name="filter-list" color='#0b739b' size={19} /></Button>
+    <Button onPress={onOpen} bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm" rounded="full"><MaterialIcons name="filter-list" color='#fff' size={19} /></Button>
 
       <Actionsheet isOpen={isOpen} onClose={onClose} hideDragIndicator={false} >
         <Actionsheet.Content mb="-8%" pb="10" justifyContent='flex-start'>
