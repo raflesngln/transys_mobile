@@ -1,5 +1,5 @@
 # Transys Mobile Application
-- git clone 
+- git clone project
 - yarn install
 - Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
@@ -55,6 +55,7 @@ checking Modules code is warning error=> tsc --traceResolution
 - ganti nama index.js menjadi index.tsx
 - buat file tsconfig.json
  // tsconfig.json
+ ```
 {
   "extends": "@tsconfig/react-native/tsconfig.json" /* Recommended React Native TSConfig base */,
   "exclude": [
@@ -88,7 +89,10 @@ checking Modules code is warning error=> tsc --traceResolution
     }
   }
 }
+```
 - Buat file babel.config.js
+
+```
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
@@ -106,11 +110,14 @@ module.exports = {
     ],
   ],
 };
+```
 - Buat file jest.config.js
+```
 	module.exports = {
   		preset: 'react-native',
   		moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 	};
+   ```
 -  run command to reset chached => yarn start --reset-cache
 - DONE !
 
@@ -125,11 +132,13 @@ module.exports = {
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
     }
-- edit file android/app/build.gradle and add 
+- edit file android/app/build.gradle and add code: 
+  ````
   apply plugin: "com.google.gms.google-services"
 	dependencies {
     		implementation platform('com.google.firebase:firebase-bom:31.1.1')
 	}
+   ```
 - Clean project => cd android && gradlew clean
 - yarn start --reset-cache
 -DONE !
@@ -141,11 +150,13 @@ module.exports = {
 	For Linux and Mac OSX:
 	./gradlew assembleRelease
 - https://instamobile.io/android-development/generate-react-native-release-build-android/
-==============================STYLES===============================
+
+
+#### ==============================STYLES===============================
 Glass background combination = back :0960d9,   front =>'#438cf075'
 
 
-#NOTIFICATIONS
+# NOTIFICATIONS
 
 local Notifications => 
 - yarn add @notifee/react-native
