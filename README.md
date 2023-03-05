@@ -12,7 +12,7 @@
 
 
 
-#Tips & trik tools settings
+## Tips & trik tools settings
 
 create apps:
 npx react-native init AwesomeTSProject
@@ -24,7 +24,7 @@ checking Modules code is warning error=> tsc --traceResolution
 
  react-native run-android --deviceId=3201f6c7ec0a161f
 
-# ==========================================================================================
+## Clean project
 - cd android && gradlew clean ||  cd android && chmod +x gradlew
 - yarn start --reset-cache
 
@@ -39,7 +39,7 @@ checking Modules code is warning error=> tsc --traceResolution
 
 - instal react-navigation=> https://reactnavigation.org/docs/getting-started
 
-## React native icon and assets and font in react native with =============
+## React native icon and assets and font in react native with 
 - instal react-native-vector-icons
 - Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
@@ -114,7 +114,7 @@ module.exports = {
 -  run command to reset chached => yarn start --reset-cache
 - DONE !
 
-# React Native Firebase 
+## React Native Firebase 
 -Instal Packet
     @react-native-firebase/app
     @react-native-firebase/auth
@@ -135,7 +135,7 @@ module.exports = {
 -DONE !
 
 
-# Create File Debug Running On other devices 
+## Create File Debug Running On other devices 
 - run command => npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 - then run => cd android && gradlew assembleDebug
 	For Linux and Mac OSX:
@@ -152,8 +152,7 @@ local Notifications =>
 - react-native-notifications
 
 
-#
-library2 :
+## library2 :
 react-native-image-progress
 yarn add react-native-document-picker
 react-native-sticky-parallax-header
