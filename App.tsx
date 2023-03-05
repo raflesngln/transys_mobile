@@ -8,7 +8,7 @@
  * @format
  */
 
-import { Box, Button,Text, Alert,Center, Slide, useColorModeValue, VStack } from 'native-base';
+import { Box, Button,Text, Alert,Center, Slide, useColorModeValue, VStack, HStack } from 'native-base';
 import React, {useEffect, type PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -17,6 +17,8 @@ import {
   StyleSheet,
   useColorScheme,
   View,
+  PixelRatio,
+  TouchableOpacity
 } from 'react-native';
 
 import {
@@ -37,27 +39,59 @@ import {requestUserPermission,GetTokenFIrebase,NotificationListener} from '@conf
 import {useState} from 'react';
 import COLORS from '@config/colors';
 
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import messaging from '@react-native-firebase/messaging';
 
-const App = () => {
 
+function App(){
   const[notifications,setNotifications]=useState<boolean>(false)
+  const[isnotif,setIsnotif]=useState<boolean>(false)
+  const[pesan,setPesan]=useState<any>()
 
+
+  const getNotificationListener=()=>{
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log(
+        'Notification froms background state:',
+        remoteMessage.notification,
+      );
+      setPesan(remoteMessage)
+      setIsnotif(true)
+    });
+  
+    messaging()
+    .getInitialNotification()
+    .then(remoteMessage => {
+      if (remoteMessage) {
+        console.log(
+          'Notification froms quit state:',
+          remoteMessage.notification,
+        );
+      setIsnotif(true)
+      }
+    });
+  
+    messaging().onMessage(async remoteMessage=>{
+      console.log('Notification froms foreground',remoteMessage)
+      setPesan(remoteMessage.data)
+      setIsnotif(true)
+    })
+    
+}
+
+
+  //firebase notifications
   useEffect(()=>{
     requestUserPermission()
     GetTokenFIrebase()
     // NotificationListener()
-    function getNotifInformationClick(){
-      const pesan:any= NotificationListener()[0].title;
-      if(pesan.length > 2){
-        setNotifications(true)
-      }
-      setTimeout(()=>{
-        setNotifications(false)
-      },2000)
-    }
-    getNotifInformationClick()
+    getNotificationListener()
 
   },[])
+
+const setNotificationsClose=(e:any)=>{
+  setIsnotif(false)
+}
 
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -73,7 +107,12 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      {
+         (isnotif && pesan) && <Notifikasi status={notifications} changeClose={(e:any)=>setNotificationsClose(e)} pesan={pesan}/>
+      }
+
     <Provider store={store}>
+      {/* <Text style={{color:'#fff'}}>{isnotif?'true':'false'}</Text> */}
       {/* <QueryClientProvider client={my_queryClient}> */}
         <PersistGate loading={null} persistor={persistor}>
           {/* <NativeBaseProvider theme={mytheme}> */}
@@ -94,7 +133,6 @@ const Notifikasi = (props:any) => {
   const [isOpenTop, setIsOpenTop] = React.useState(false);
   const str = `${isOpenTop ? "Hide" : "Check Internet Connection"}`;
 
-
   useEffect(()=>{
     if(props.status==true){
       setIsOpenTop(true)
@@ -105,23 +143,24 @@ const Notifikasi = (props:any) => {
 
   },[])
 
-
-
-  return <Center h="20">
-      <Slide in={isOpenTop} placement="top">
-        <Alert justifyContent="center" status="error" safeAreaTop={8}>
-          <Alert.Icon />
-          <Text color="error.600" fontWeight="medium">
-            {props.title}
-          </Text>
-        </Alert>
-      </Slide>
-      <Button onPress={() => setIsOpenTop(!isOpenTop)} variant="unstyled" bg={COLORS.contentBg100} _text={{
-      color: useColorModeValue("darkText", "lightText")
-    }}>
-        {str}
-      </Button>
-    </Center>;
+  const setClose=()=>{
+    console.log('closeee')
+    props.changeClose(false)
+  }
+  return <HStack p={3} h={85 / PixelRatio.getFontScale()} bg="#ff9800" justifyContent="space-between">
+      <View>
+        <Text pt={1} style={{color:'#fff',fontSize:17,fontWeight:'bold'}}>
+        <View><MaterialIcons name="notifications" color='#ffff' size={23} /></View>
+        &nbsp;New Notification</Text>
+        <Text color='#fff'>{props.pesan?.message}</Text>
+      </View>
+       <TouchableOpacity onPress={()=>setClose()}>
+          <Text color='#fff' style={{color:'#fff',backgroundColor:'#000',paddingLeft:10,paddingRight:10,paddingTop:3,paddingBottom:5,borderRadius:10,marginTop:5}}>
+          <View><MaterialIcons name="close" color='#ffff' size={15} /></View>
+            Close
+         </Text>
+       </TouchableOpacity>
+    </HStack>;
 };
 
 const styles = StyleSheet.create({

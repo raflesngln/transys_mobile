@@ -135,10 +135,10 @@ function Content(props:any){
               <VStack space={2}  w='100%'>
                 <LinearGradient
                   // colors={['#030e28','#2d3a85','#030e28' ]}
-                  colors={['#fff','#fff','#fff' ]}
+                  colors={['#fff','#fff','#fff',]}
                   // colors={[COLORS.teal600,COLORS.mint100,COLORS.mint100 ]}
                   style={styles.headerBox}
-                  start={{ x: 0, y: 0 }}
+                  start={{ x: 0, y: 0.1 }}
                   end={{ x: 1, y: 1 }}
                 >
                   <VStack space={2} ml="2%" mt="-10%" flexDirection="row" justifyContent="center" justifyItems="center">
@@ -192,10 +192,10 @@ function Content(props:any){
                         {/* <FormControl.Label>   Password</FormControl.Label> */}
                       
                       <Box mt="5">
-                            <Button rounded="50"  h="50px" bg={COLORS.mint300}  borderColor={COLORS.teal100} borderWidth={2} onPress={GoLogin}> 
+                            <Button rounded="50"  h="50px" bg={COLORS.mint400}  borderColor={COLORS.teal100} borderWidth={2} onPress={GoLogin}> 
                               <HStack space={2} >
-                                <Text color={COLORS.black300} fontWeight="700"> LOGIN NOW</Text>
-                                <MaterialCommunityIcons name="chevron-right" style={{color:COLORS.black300}} size={22} />
+                                <Text color={COLORS.black200} fontWeight="700"> LOGIN NOW</Text>
+                                <MaterialCommunityIcons name="chevron-right" style={{color:COLORS.black200}} size={22} />
                               </HStack>
                             </Button>
                       </Box>
@@ -223,7 +223,7 @@ function Content(props:any){
                         <Text mt="2" style={styles.bottomText} onPress={() =>AuthNavigationProp.navigate('RegisterUser')}>Register New User </Text>
                       </TouchableOpacity>
                       <TouchableOpacity>
-                        <Text style={{color:'#94bef7'}}>Forgot Password ? </Text>
+                        <Text style={{color:COLORS.black200}}>Forgot Password ? </Text>
                         <Text style={styles.bottomText} onPress={() =>AuthNavigationProp.navigate('ForgotPassword',{title:'Lupa Password'})}>Click here ! </Text>
                       </TouchableOpacity>
                     </HStack> 
@@ -278,7 +278,7 @@ function Content(props:any){
       bottomText:{
         fontSize:16,
         marginBottom:8,
-        color:'#7ef2fc',
+        color:COLORS.white500,
         textDecorationLine: "underline",
         textDecorationStyle: "solid",
         textDecorationColor: "#838587"

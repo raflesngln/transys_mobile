@@ -23,9 +23,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import COLORS from '@config/colors'
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
-import {requestUserPermission,GetTokenFIrebase,NotificationListener} from '@config/Pushnnotification_helper'
-
-
 import {TextCustom} from '@components/TextCustom';
 import { useAppSelector, useAppDispatch } from '@redux/hooks'
 import { setDataLogin, logout } from '@redux/apps/LoginSlice'
@@ -40,12 +37,6 @@ import LayoutBackground from '@components/LayoutBackground';
 const ProfileScreen = (props:any) => {
   const route = useRoute();
 
-
-  useEffect(()=>{
-    requestUserPermission()
-    GetTokenFIrebase()
-    NotificationListener()
-  },[])
   return (
     <LayoutBackground>
       <Content/>

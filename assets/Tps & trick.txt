@@ -51,7 +51,7 @@ checking Modules code is warning error=> tsc --traceResolution
             </View>
 
 ==========================================================================================
-******Setup Path Alias in a React Native*********
+****** Setup Path Alias in a React Native*********
  Documentasi: https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project
 
 - Install module resolver => yarn add --dev babel-plugin-module-resolver

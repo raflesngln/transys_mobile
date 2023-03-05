@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Dimensions,SafeAreaView, ImageBackground, Pressable, StyleSheet ,TouchableOpacity} from "react-native";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import notifee, { EventType } from '@notifee/react-native';
 
+import CrudDataWithClass from '@services/sample_api/crudDataWIthClass'
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 import COLORS from '@config/colors';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +21,7 @@ const App = () =>{
   const [itemData, setItemData] = useState<undefined | any>([])
   const [itemDataUsers, setItemDataUsers] = useState<undefined | any>()
   const [products, setProducts] = useState<undefined | any>()
+  const [users, setUsers] = useState<undefined | any>()
   const navigation = useNavigation();
 
 
@@ -43,6 +46,31 @@ const App = () =>{
       });
 }
 
+async function onDisplayNotification() {
+  // Request permissions (required for iOS)
+  await notifee.requestPermission()
+
+  // Create a channel (required for Android)
+  const channelId = await notifee.createChannel({
+    id: 'default',
+    name: 'Default Channel',
+  });
+
+  // Display a notification
+  await notifee.displayNotification({
+    title: 'Notification Title',
+    body: 'Main body content of the Local Notification',
+    android: {
+      channelId,
+      // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
+      // pressAction is needed if you want the notification to open the app when pressed
+      pressAction: {
+        id: 'default',
+      },
+    },
+  });
+}
+
   useEffect(() => {
     async function dataUsers(){
       const datausers=await getUsers()
@@ -50,10 +78,32 @@ const App = () =>{
     }
     dataUsers()
     getPhotos()
+
+    setTimeout(() => {
+      onDisplayNotification()
+    }, 5000);
+
+    //Notifications on Listener
+    return notifee.onForegroundEvent(({ type, detail }) => {
+      switch (type) {
+        case EventType.DISMISSED:
+          console.log('User dismissed notification', detail.notification);
+          break;
+        case EventType.PRESS:
+          console.log('User pressed notification', detail.notification);
+          break;
+      }
+    });
+    
   }, []);
   
   const getDetailShipment=()=> {
     console.log('Function not implemented.');
+  }
+  const getallDataClass=async ()=> {
+    let datas=await CrudDataWithClass.getAllData({page:1,limit:10,search:'lorem ipsum'})
+    setUsers(datas)
+    console.log(JSON.stringify(datas));
   }
 
   return(
@@ -142,6 +192,12 @@ const App = () =>{
                   </VStack>
                 </HStack>
 
+                <Text mt={4} color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>NOTIFICATIONS</Text>
+                <HStack>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal600} onPress={() => onDisplayNotification()}>
+                  <Text color='#fff'><MaterialIcons name="notifications" size={20} />Show Local Notifications</Text>
+                    </Button>
+                </HStack>
 
                 <Text mt={4} color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>LINE COLOR</Text>
                 <Box h={45} bg={COLORS.contentBg500} borderRadius={8} p={2}><Text style={{borderBottomColor:COLORS.LineColor100,borderBottomWidth:1}}>LineColor100</Text></Box>
@@ -181,6 +237,19 @@ const App = () =>{
                 </Pressable >
               })
             }
+
+          <Text mt={4} color="gray.200" style={{fontSize:17,fontWeight:'bold'}}>CRUD DATA CLASSS</Text>
+                <HStack p={4} bg={COLORS.contentBg600}>
+                  <Button mb="3" borderRadius={6} bg={COLORS.teal600} onPress={() => getallDataClass()}>
+                    <Text color='#fff'>get all users With Class</Text>
+                    </Button>
+                </HStack>
+
+            <Box bg={COLORS.contentBg600}>
+              <Text>
+                {JSON.stringify(users)}
+              </Text>
+            </Box>
           </VStack>
 
           <Spacer mt={30} />
