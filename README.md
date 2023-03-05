@@ -164,10 +164,12 @@ local Notifications =>
 
 
 ## library2 :
-react-native-image-progress
-yarn add react-native-document-picker
-react-native-sticky-parallax-header
-React Native Reanimated
-yarn add @shopify/flash-list
-react-native-copilot
-notifee
+- react-native-svg
+- react-native-image-progress
+- yarn add react-native-document-picker
+- react-native-sticky-parallax-header
+- react-native-app-intro-slider
+- React Native Reanimated
+- yarn add @shopify/flash-list
+- react-native-copilot
+- notifee
