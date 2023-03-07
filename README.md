@@ -1,7 +1,7 @@
 # Transys Mobile Application
 - git clone project
 - yarn install
-- Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
+- 📄 Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 - react-native-asset
 - cd android && gradlew clean OR  cd android && chmod +x gradlew
@@ -25,7 +25,7 @@ checking Modules code is warning error=> tsc --traceResolution
  react-native run-android --deviceId=3201f6c7ec0a161f
 
 ## Clean project
-- cd android && gradlew clean ||  cd android && chmod +x gradlew
+- 📁 cd android && gradlew clean ||  cd android && chmod +x gradlew
 - yarn start --reset-cache
 
 ```
@@ -41,7 +41,7 @@ checking Modules code is warning error=> tsc --traceResolution
 
 ## React native icon and assets and font in react native with 
 - instal react-native-vector-icons
-- Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
+- 📁 Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 - run cmd in project : react-native-asset
 - cd android && gradlew clean
@@ -52,8 +52,8 @@ checking Modules code is warning error=> tsc --traceResolution
  Documentasi: https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project
 
 - Install module resolver => yarn add --dev babel-plugin-module-resolver
-- ganti nama index.js menjadi index.tsx
-- buat file tsconfig.json
+- 📄 ganti nama index.js menjadi index.tsx
+- 📄 buat file tsconfig.json
  // tsconfig.json
  ```
 {
@@ -90,7 +90,7 @@ checking Modules code is warning error=> tsc --traceResolution
   }
 }
 ```
-- Buat file babel.config.js
+- 📄 Buat file babel.config.js
 
 ```
 module.exports = {
@@ -111,7 +111,7 @@ module.exports = {
   ],
 };
 ```
-- Buat file jest.config.js
+- 📄 Buat file jest.config.js
 ```
 	module.exports = {
   		preset: 'react-native',
@@ -128,11 +128,11 @@ module.exports = {
     @react-native-firebase/messaging
 - Create Project in google console => https://console.firebase.google.com and download file google-services.json
 -place google-services.json to folder path android\app 
-- edit file android/build.gradle and add 
+- 📄 edit file android/build.gradle and add 
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
     }
-- edit file android/app/build.gradle and add code: 
+- 📄 edit file android/app/build.gradle and add code: 
   ````
   apply plugin: "com.google.gms.google-services"
 	dependencies {
@@ -156,7 +156,7 @@ module.exports = {
 Glass background combination = back :0960d9,   front =>'#438cf075'
 
 
-# NOTIFICATIONS
+## NOTIFICATIONS
 
 local Notifications => 
 - yarn add @notifee/react-native
