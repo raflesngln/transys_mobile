@@ -7,10 +7,11 @@ import { RootNavigatorList } from './types';
 const Stack = createNativeStackNavigator<RootNavigatorList>(); // checking type for name stack & types params
 
 import SplashScreen from '../screens/SplashScreen';
+import StartUpScreen from '../screens/StartUpScreen';
 import AuthStackNavigator from './AuthStack';
 import BottomTabsStack from './Tabs';
 import HomeStackNavigator from './HomeStack';
-import JobsStack from './JobsStack';
+import JobsStack from './JobsStack';   
 import MessageStack from './MessageStack';
 import ScannerStack from './ScannerStack';
 
@@ -18,6 +19,7 @@ const RootNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="SplashScreen">
+          <Stack.Screen name="StartUpScreen" component={StartUpScreen} />
           <Stack.Screen name="SplashScreen" component={SplashScreen} />
           <Stack.Screen name="Auth" component={AuthStackNavigator} />
           <Stack.Screen name="HomeStack" component={HomeStackNavigator} />

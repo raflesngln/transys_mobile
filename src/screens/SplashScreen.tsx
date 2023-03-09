@@ -24,7 +24,7 @@ import LayoutBackground from '@components/LayoutBackground';
 
 const SplashScreen = ({navigation}:any) => {
   //State for ActivityIndicator animation
-  const Rootnavigation = useNavigation<RootNavigation>(); // croot Navigations
+  const Rootnavigation = useNavigation<RootNavigation>(); // root Navigations
   const datalogin = useAppSelector((state) => state.login)
     const dispatch = useAppDispatch()
   const [animating, setAnimating] = useState(true);
@@ -33,7 +33,8 @@ const SplashScreen = ({navigation}:any) => {
   useEffect(() => {
     function GetStatusLogin(){
       const cekLogin:boolean=datalogin.dataLogin.isLogin
-      Rootnavigation.replace(cekLogin === true ? 'BottomMenu' : 'Auth')
+      // Rootnavigation.replace(cekLogin === true ? 'BottomMenu' : 'Auth') // langsung ke home jika login sudah ada
+      Rootnavigation.replace(cekLogin === true ? 'StartUpScreen' : 'StartUpScreen') // langsung ke home jika login sudah ada
       console.log('Checking status login')
       // console.log(datalogin)
     }

@@ -7,6 +7,7 @@ export type RootNavigatorList = {
   BottomMenu:undefined;
   HomeMenu:undefined;
   HomeStack:any;
+  StartUpScreen:undefined;
   SplashScreen:undefined;
   ScannerStack:undefined;
   MessageStack:undefined;

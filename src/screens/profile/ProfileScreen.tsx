@@ -109,7 +109,7 @@ const ProfileScreen = (props:any) => {
                         <TouchableOpacity>
                         <HStack justifyContent="space-between" pb={2} mb="5" borderBottomColor="#779ca591" borderBottomWidth={1}>
                           <Text w="10%"><MaterialCommunityIcons name="help-box" color={'#4b5157'} size={25} /></Text>
-                          <Text w="80%">Help Support</Text>
+                          <Text w="80%">Help Support's</Text>
                           <Text w="7%"><MaterialCommunityIcons name="chevron-right" color={'#888b8f'} size={25} /></Text>
                         </HStack>
                         </TouchableOpacity>
@@ -187,7 +187,7 @@ const ProfileScreen = (props:any) => {
         icon: "folder-account-outline"
       }, {
         id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        fullName: "Job Settings",
+        fullName: "Notification's",
         icon: "application-cog-outline"
       }, {
         id: "68694a0f-3da1-431f-bd56-142371e29d72",
