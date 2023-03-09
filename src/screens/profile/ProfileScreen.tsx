@@ -66,7 +66,7 @@ const ProfileScreen = (props:any) => {
     }
 
   const LogoutUser=()=>{
-      dispatch(setDataLogin({isLogin:false,username:'',profilePicture:'',value:0}))
+      dispatch(setDataLogin({isLogin:false,username:'',profilePicture:'',value:0,itHasEverLogin:true}))
       console.log('logout user')
       navigationRoot.replace('Auth')
     }

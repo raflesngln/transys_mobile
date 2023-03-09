@@ -3,10 +3,10 @@ import { StyleSheet, View, Image, SafeAreaView, StatusBar } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import LoginScreen from '@screens/auth/LoginScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import {Box, Text, VStack} from 'native-base'
 
-
+import { useAppSelector, useAppDispatch } from '@redux/hooks'
+import useEffect from 'react';
 const slides = [
   {
     key: 1,
@@ -32,11 +32,11 @@ const slides = [
 ];
 
 export default function StartupSCreen() {
+  const datalogin = useAppSelector((state) => state.login)
   const [showRealApp, setShowRealApp] = useState(false);
   const [colorstatus, setColorstatus] = useState(slides[0].bgColor);
 
   const _renderItem = ({ item }) => {
-
     return (
       <View style={[styles.slide,{backgroundColor:item.bgColor}]}>
           <StatusBar
@@ -84,9 +84,16 @@ export default function StartupSCreen() {
     setShowRealApp(true);
   };
 
+
+  if(datalogin.dataLogin.itHasEverLogin==true){
+    return <LoginScreen />;
+  }
+
   if (showRealApp) {
+    console.log("INI LOCAL STORAGES "+JSON.stringify(datalogin.dataLogin))
     return <LoginScreen />;
   } else {
+    console.log("INI LOCAL STORAGES2 "+JSON.stringify(datalogin.dataLogin))
     return (
       <>
        <SafeAreaView style={styles.container}>
@@ -99,6 +106,9 @@ export default function StartupSCreen() {
       </>
     );
   }
+
+
+
 }
 
 const styles = StyleSheet.create({

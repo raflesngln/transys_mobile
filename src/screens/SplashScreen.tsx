@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import { RootNavigation } from '@navigation/types';
 import { useAppSelector, useAppDispatch } from '@redux/hooks'
@@ -29,14 +31,30 @@ const SplashScreen = ({navigation}:any) => {
     const dispatch = useAppDispatch()
   const [animating, setAnimating] = useState(true);
 
+  const clearAllDataAsynStorage = async () => {
+    try {
+      await AsyncStorage.clear()
+    } catch(e) {
+    }
+    console.log('Done Clear AsynStorage')
+  }
+
   
   useEffect(() => {
+    // clearAllDataAsynStorage()
+    
     function GetStatusLogin(){
       const cekLogin:boolean=datalogin.dataLogin.isLogin
+      const username:any=datalogin.dataLogin.username
       // Rootnavigation.replace(cekLogin === true ? 'BottomMenu' : 'Auth') // langsung ke home jika login sudah ada
-      Rootnavigation.replace(cekLogin === true ? 'StartUpScreen' : 'StartUpScreen') // langsung ke home jika login sudah ada
+      // Rootnavigation.replace(cekLogin === true ? 'BottomMenu' : 'StartUpScreen') // langsung ke home jika login sudah ada
+      if(cekLogin === true && username.length > 2){
+        Rootnavigation.replace('BottomMenu') // langsung ke home jika login sudah ada
+      }else{
+        Rootnavigation.replace('StartUpScreen') // masuk ke startup screen
+      }
       console.log('Checking status login')
-      // console.log(datalogin)
+      console.log(datalogin)
     }
     setTimeout(() => {
       GetStatusLogin()

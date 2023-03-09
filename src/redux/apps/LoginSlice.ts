@@ -12,20 +12,22 @@ export interface LoginState {
     email: string;
     value:number;
     darkMode:string;
+    itHasEverLogin:boolean;
   },
   darkMode:string;
 }
 
 const initialState: LoginState = {
   dataLogin: {
-    isLogin: true,
+    isLogin: false,
     token:'',
     username: '',
     name: '',
     profilePicture: '',
     email: '',
     value: 0,
-    darkMode: 'light'
+    darkMode: 'light',
+    itHasEverLogin: false,
   },
   darkMode: 'light',
 };

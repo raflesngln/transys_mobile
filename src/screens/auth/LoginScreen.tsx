@@ -78,7 +78,6 @@ function Content(props:any){
             })
         try {
           const respon=await res.data
-
           if(respon.success==true){
             console.log(respon.success)
             // console.log(respon.data.user)
@@ -89,6 +88,7 @@ function Content(props:any){
               name:respon.data.user.name,
               photo:respon.data.user.photo,
               email:respon.data.user.email,
+              itHasEverLogin:true
             }
             dispatch(setDataLogin(reduxdata))
             setTimeout(()=>{
