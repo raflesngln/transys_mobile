@@ -127,10 +127,12 @@ module.exports = {
 - DONE !
 
 ## React Native Firebase 
--Instal Packet
+-Instal Pcakage:
+```
     yarn add @react-native-firebase/app
     yarn add @react-native-firebase/auth
     yarn add @react-native-firebase/messaging
+```
 - Create Project in google console => https://console.firebase.google.com and download file google-services.json
 -place google-services.json to folder path android\app 
 - 📄 edit file android/build.gradle and add 
