@@ -142,12 +142,12 @@ module.exports = {
     }
     ```
 - 📄 edit file android/app/build.gradle and add code: 
-  ````
+  ```
   apply plugin: "com.google.gms.google-services"
 	dependencies {
     		implementation platform('com.google.firebase:firebase-bom:31.1.1')
 	}
-   ```
+  ```
 - Clean project 
   ``` cd android && gradlew clean ```
 - Reset Project
