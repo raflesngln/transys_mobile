@@ -45,8 +45,9 @@ checking Modules code is warning error=> tsc --traceResolution
 - instal react-native-vector-icons
   ``` yarn add react-native-vector-icons ```
 - 📁 Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
-   ``` apply from: "../../node_modules/react-native-vector-icons/fonts.gradle" 
    ```
+  apply from: "../../node_modules/react-native-vector-icons/fonts.gradle" 
+  ```
 - run cmd in project : react-native-asset
 - cd android && gradlew clean
 - and run again : react-native-asset and run gradele clean again
@@ -133,7 +134,7 @@ module.exports = {
 - Create Project in google console => https://console.firebase.google.com and download file google-services.json
 -place google-services.json to folder path android\app 
 - 📄 edit file android/build.gradle and add 
-- ```
+    ```
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
     }
@@ -149,7 +150,7 @@ module.exports = {
   ``` cd android && gradlew clean ```
 - Reset Project
   ``` yarn start --reset-cache ```
--DONE !
+- DONE !
 
 
 ## Create File Debug Running On other devices 
@@ -157,7 +158,8 @@ module.exports = {
   ``` npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res 
   ```
 - then run => 
-  ``` cd android && gradlew assembleDebug
+  ```
+  cd android && gradlew assembleDebug
   ```
 	For Linux and Mac OSX:
   ```
