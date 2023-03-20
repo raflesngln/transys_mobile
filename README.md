@@ -155,9 +155,10 @@ module.exports = {
 
 ## Create File Debug Running On other devices 
 - run command => 
-  ``` npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res 
   ```
-- then run => 
+  npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res 
+  ```
+- then run (in windows) => 
   ```
   cd android && gradlew assembleDebug
   ```
