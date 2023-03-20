@@ -52,13 +52,14 @@ interface KategoriProps {
   title: any
 }
 
-const JoblistScreen = (props:any) => {
+const NotificationsLists = (props:any) => {
   const route = useRoute();
   // const { title } = route.params;
 
   return (
     <LayoutBackground>
       <Content/>
+      <Text>Lore</Text>
     </LayoutBackground>
   );
 };
@@ -108,6 +109,7 @@ const JoblistScreen = (props:any) => {
         return (
           <NativeBaseProvider>
             <SafeAreaView style={styles.container}>
+              
             <Flex direction="row" mb="2">
               <VStack space={2}  w='100%'  bg="#00bcd44a" pt={3}>
               <Box style={{height:180}}>
@@ -115,14 +117,11 @@ const JoblistScreen = (props:any) => {
                   <Box mb="2">
                     <Box p="2" display="flex" flexDirection="row" justifyContent="space-between">
                       <Box pt="2">
-                        <Text style={{color:'#ffff',fontWeight:'600',fontSize:22}}><MaterialCommunityIcons name="sticker-text" color='#bfe0ce' size={20} /> Shipments</Text>
+                        <Text style={{color:'#ffff',fontWeight:'600',fontSize:22}}><MaterialCommunityIcons name="sticker-text" color='#bfe0ce' size={20} /> Nofitifactions</Text>
                       </Box>
                       <HStack space={2}>
                         <Box pl="1">
                             <Button onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'InputJobs', params: {title:'inpuyt jobs' } })} bg={COLORS.mint400} borderColor={COLORS.mint400} borderWidth={1}  h="42" w="42" variant="subtle" size="sm"  rounded='full'><MaterialIcons name="add" color={COLORS.black300} size={18} /></Button>
-                        </Box>
-                        <Box>
-                            <MenuFilterShipment/>
                         </Box>
                         <Box>
                             <MenuActionSearchShipment/>
@@ -373,121 +372,6 @@ function MenuActionSearchShipment():JSX.Element {
     </Box>;
 }
 
-
-function MenuFilterShipment(props:any):JSX.Element {
-  const navigation = useNavigation<any>();
-
-  
-  const [selectedDate, setSelectedDate] = useState('');
-  
-  const [datePicker, setDatePicker] = useState(false);
-  const [date, setDate] = useState(new Date());
-  const [date2, setDate2] = useState(new Date());
-  const tanggal=moment(date).format('YYYY-MM-DD')
-  const tanggal2=moment(date2).format('YYYY-MM-DD')
-
-  const [value, setValue] = React.useState("one");
-  const {isOpen,onOpen,onClose} = useDisclose();
-
-
-  function showDatePicker(selected:string) {
-    setDatePicker(!datePicker);
-  };
-
-  function onDateSelected(event:any, val:any) {
-    setDatePicker(!datePicker);
-    if(selectedDate=='tgl1'){
-      setDate(val);
-    } else if(selectedDate=='tgl2'){
-      setDate2(val);
-    }
-  };
-
-  const editShipment=(aksi:any,pid:any)=>{
-    console.warn(aksi+ " SHIPMENT "+pid)
-    onClose
-  }
-  const GetDetail=(pid:any)=>{
-    onClose
-   navigation.navigate('JobsStack' as never,{ screen: 'DetailJobs', params: { id: props.pid } })
-  }
-
-  return <Center >
-    <Button onPress={onOpen} bg={COLORS.teal300}  h="42" w="42" variant="subtle" size="sm" rounded="full"><MaterialIcons name="filter-list" color='#fff' size={19} /></Button>
-
-      <Actionsheet isOpen={isOpen} onClose={onClose} hideDragIndicator={false} >
-        <Actionsheet.Content mb="-8%" pb="10" justifyContent='flex-start'>
-          <Box  pt="5" mb="8" borderBottomColor="gray.300" borderBottomWidth={1} pb={2}>
-            <Text style={{color:"#000",fontSize:20,fontWeight:'bold'}}>Filter Shipment</Text>
-          </Box>
-
-
-          <Radio.Group name="myRadioGroup" accessibilityLabel="favorite number" value={value} onChange={nextValue => {
-              setValue(nextValue);
-            }}>
-              <HStack mb="4" pl={2} borderBottomColor="gray.300" borderBottomWidth={1} pb={2}>
-                <Box w="90%"><Text style={{color:'#000',fontSize:16,fontWeight:'500'}}>30 Hari Terakhir</Text></Box>
-                <Box w="10%"><Radio value="one" my={1}>&nbsp;</Radio></Box>
-              </HStack>
-
-              <HStack mb="4" pl={2} borderBottomColor="gray.300" borderBottomWidth={1} pb={2}>
-                <Box w="90%"><Text style={{color:'#000',fontSize:16,fontWeight:'500'}}>90 Hari Terakhir</Text></Box>
-                <Box w="10%"><Radio value="two" my={1}>&nbsp;</Radio></Box>
-              </HStack>
-
-              <VStack mb="5" pl={2}>
-                <HStack mb={2}>
-                  <Box w="90%"><Text style={{color:'#000',fontSize:16,fontWeight:'500'}}>Pilih Range Tanggal</Text></Box>
-                  <Box w="10%"><Radio value="three" my={1}>&nbsp;</Radio></Box>
-                </HStack>
-                {
-                  value=='three' &&
-                <View>
-                  <HStack justifyContent="space-between" mb={2}>
-                    <Box pl="3" w="55%"><Text>Mulai Dari</Text></Box>
-                    <Box pr="2" w="45%"><Text>Sampai Tanggal </Text></Box>
-                  </HStack>
-                  <HStack justifyContent="space-between" space={2}>
-                        <Box pl="1" w="47%">
-                          <TouchableOpacity onPress={()=>{showDatePicker('tgl1');setSelectedDate('tgl1')}}>
-                            <Input type="text" isReadOnly={true} value={tanggal} borderRadius={10}/>
-                          </TouchableOpacity>
-                        </Box>
-                        <Box pr="2" w="47%">
-                            <TouchableOpacity onPress={()=>{showDatePicker('tgl2');setSelectedDate('tgl2')}}>
-                                <Input type="text"  isReadOnly={true} value={tanggal2} borderRadius={10}/>
-                            </TouchableOpacity>
-                        </Box>
-                  </HStack>
-                </View>
-                }
-
-              </VStack>
-          </Radio.Group>
-          <Actionsheet.Item >
-            <HStack w="100%">
-              <Spacer w="2%"/>
-              <Button w="97%" onPress={onClose} borderRadius={15} mb={1}>Terapkan Filter</Button>
-            </HStack>
-          </Actionsheet.Item>
-        </Actionsheet.Content>
-      </Actionsheet>
-      <View>
-        {datePicker && (
-            <DateTimePicker
-              value={date}
-              mode={'date'}
-              display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-              is24Hour={true}
-              onChange={onDateSelected}
-              style={styles.datePicker}
-            />
-          )}
-        </View>
-    </Center>;
-}
-
-
     const styles = StyleSheet.create({
       container: {
         flex: 1,
@@ -527,4 +411,4 @@ function MenuFilterShipment(props:any):JSX.Element {
       },
     });
 
-export default JoblistScreen;
+export default NotificationsLists;

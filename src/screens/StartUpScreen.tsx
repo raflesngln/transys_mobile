@@ -71,7 +71,7 @@ const slides: Slide[] = [
         <VStack space={1} justifyContent="center" flex={1}>
           <Text style={[styles.title]}>{item.title}</Text>
           <Stack h="43%" style={{ left: '-1%' }} >
-            <IlustrasiSvgFile index={1}/>
+            {/* <IlustrasiSvgFile index={1}/> */}
             {item.key=='1' && <StartScreenSlide1 h={deviceHeight} w={deviceWidth}/>}
             {item.key=='2' && <StartScreenSlide2 h={deviceHeight} w={deviceWidth}/>}
             {item.key=='3' && <StartScreenSlide3 h={deviceHeight} w={deviceWidth}/>}

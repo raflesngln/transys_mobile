@@ -34,6 +34,9 @@ export type HomeStackNavigatorParamList = {
         title:string,
         id:any
     };
+    NotificationsScreen:{
+        title:string,
+    };
     RecomendationProduct:{
         title:string
     };
@@ -93,6 +96,9 @@ export type MessageNavigatorParamList = {
       title:string
     };
     DetailUser: {
+      title:string
+    };
+    NotificationsScreen: {
       title:string
     };
     LogoutApp: {

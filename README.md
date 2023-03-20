@@ -2,13 +2,15 @@
 - git clone project
 - yarn install
 - 📄 Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
+  ```
    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+   ```
 - react-native-asset
-- cd android && gradlew clean OR  cd android && chmod +x gradlew
+- ``` cd android && gradlew clean OR  cd android && chmod +x gradlew ```
 - cd ..
-- react-native-asset
-- yarn start --reset-cache
-- npm run android
+- ``` react-native-asset ```
+- ``` yarn start --reset-cache ```
+- ``` npm run android ```
 
 
 
@@ -41,8 +43,10 @@ checking Modules code is warning error=> tsc --traceResolution
 
 ## React native icon and assets and font in react native with 
 - instal react-native-vector-icons
+  ``` yarn add react-native-vector-icons ```
 - 📁 Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
-   apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+   ``` apply from: "../../node_modules/react-native-vector-icons/fonts.gradle" 
+   ```
 - run cmd in project : react-native-asset
 - cd android && gradlew clean
 - and run again : react-native-asset and run gradele clean again
@@ -123,15 +127,17 @@ module.exports = {
 
 ## React Native Firebase 
 -Instal Packet
-    @react-native-firebase/app
-    @react-native-firebase/auth
-    @react-native-firebase/messaging
+    yarn add @react-native-firebase/app
+    yarn add @react-native-firebase/auth
+    yarn add @react-native-firebase/messaging
 - Create Project in google console => https://console.firebase.google.com and download file google-services.json
 -place google-services.json to folder path android\app 
 - 📄 edit file android/build.gradle and add 
+- ```
     dependencies {
         classpath 'com.google.gms:google-services:4.3.13'
     }
+    ```
 - 📄 edit file android/app/build.gradle and add code: 
   ````
   apply plugin: "com.google.gms.google-services"
@@ -139,16 +145,24 @@ module.exports = {
     		implementation platform('com.google.firebase:firebase-bom:31.1.1')
 	}
    ```
-- Clean project => cd android && gradlew clean
-- yarn start --reset-cache
+- Clean project 
+  ``` cd android && gradlew clean ```
+- Reset Project
+  ``` yarn start --reset-cache ```
 -DONE !
 
 
 ## Create File Debug Running On other devices 
-- run command => npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-- then run => cd android && gradlew assembleDebug
+- run command => 
+  ``` npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res 
+  ```
+- then run => 
+  ``` cd android && gradlew assembleDebug
+  ```
 	For Linux and Mac OSX:
+  ```
 	./gradlew assembleRelease
+  ```
 - https://instamobile.io/android-development/generate-react-native-release-build-android/
 
 

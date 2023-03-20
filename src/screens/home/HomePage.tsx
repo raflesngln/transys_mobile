@@ -2,7 +2,7 @@ import { View, HStack, Box, Heading, Text, Avatar, Center, Button, VStack, Scrol
 import React, { useEffect, useState } from "react";
 import { Dimensions, ImageBackground, Pressable, StyleSheet, TouchableOpacity } from "react-native";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { color } from 'native-base/lib/typescript/theme/styled-system';
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppSelector } from '@redux/hooks';
 
@@ -19,6 +19,7 @@ function HomePage() {
   const [itemData, setItemData] = useState<undefined | any>([])
   const [itemDataUsers, setItemDataUsers] = useState<undefined | any>()
   const [products, setProducts] = useState<undefined | any>()
+  const navigation = useNavigation<any>();
 
 
   const getUsers = async () => {
@@ -64,7 +65,8 @@ function HomePage() {
               <HStack justifyContent="space-between" w="100%" bg="#93f0fb40" h="140" borderBottomLeftRadius={2} borderBottomRightRadius={70} zIndex={1}  >
                 <Box p={2}>
                   <HStack space={3} mb={2}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('HomeStack' as never,{ screen: 'NotificationsScreen', params: {title:'inpuyt jobs' } })}>
+                    {/* <TouchableOpacity onPress={() => navigation.navigate('JobsStack' as never,{ screen: 'NotificationsScreen', params: {title:'inpuyt jobs' } })}> */}
                       <Stack>
                         <Badge // bg="red.400"
                           colorScheme="danger" rounded="full" mb={-3} mr={-2} zIndex={1} variant="solid" alignSelf="flex-end" _text={{
