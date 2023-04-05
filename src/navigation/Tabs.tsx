@@ -116,7 +116,7 @@ const BottomTabs = () => {
                   zIndex:999
               }}>
               <Image
-                source={require('../../assets/images/scan.png')}
+                source={require('@assets/images/scan.png')}
                 style={{
                   width: 40,
                   height: 40,
